@@ -10,6 +10,7 @@ public class Item{
 	public string rarity;
 	public Sprite icon;
 	public bool isChampion;
+	public Button.ButtonClickedEvent buttonEvent;
 }
 
 public class ListPopulator : MonoBehaviour {
@@ -31,9 +32,13 @@ public class ListPopulator : MonoBehaviour {
 			sampleobj.rarityLabel.text = item.rarity;
 			sampleobj.icon.sprite = item.icon;
 			sampleobj.isChampionIcon.SetActive(item.isChampion);
-
+			sampleobj.button.onClick = item.buttonEvent;
 			newButton.transform.SetParent(contentPanel,false);
 			contentPanel.SetAsLastSibling();
 		}
+	}
+
+	public void Eeee(){
+		Debug.Log("dddd");
 	}
 }
