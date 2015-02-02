@@ -6,10 +6,10 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Item{
 	public string name;
-	public string type;
-	public string rarity;
+	public string level;
+	public string price;
 	public Sprite icon;
-	public bool isChampion;
+	public bool isAvaliable;
 	public Button.ButtonClickedEvent buttonEvent;
 }
 
@@ -28,12 +28,13 @@ public class ListPopulator : MonoBehaviour {
 			GameObject newButton = Instantiate(prefabButton) as GameObject;	
 			SampleButton sampleobj = newButton.GetComponent<SampleButton>();
 			sampleobj.nameLabel.text = item.name;
-			sampleobj.typeLabel.text = item.type;
-			sampleobj.rarityLabel.text = item.rarity;
+			sampleobj.levelLabel.text = item.level;
+			sampleobj.priceLabel.text = item.price;
 			sampleobj.icon.sprite = item.icon;
-			sampleobj.isChampionIcon.SetActive(item.isChampion);
+			sampleobj.button.interactable = item.isAvaliable;
 			sampleobj.button.onClick = item.buttonEvent;
 			newButton.transform.SetParent(contentPanel,false);
+
 			contentPanel.SetAsLastSibling();
 		}
 	}

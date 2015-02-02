@@ -5,10 +5,9 @@ public class SampleButton : MonoBehaviour
 {
 	public Button button;
 	public Text nameLabel;
-	public Text typeLabel;
-	public Text rarityLabel;
+	public Text levelLabel;
+	public Text priceLabel;
 	public Image icon;
-	public GameObject isChampionIcon;
 }
 
 
