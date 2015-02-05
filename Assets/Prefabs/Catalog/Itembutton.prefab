@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11411104}
   - 114: {fileID: 11411106}
   - 114: {fileID: 11411102}
-  - 114: {fileID: 11411098}
+  - 114: {fileID: 11424182}
   m_Layer: 5
   m_Name: Itembutton
   m_TagString: Untagged
@@ -54,20 +54,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11411098
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e128d15ee0e1c0448017e4d7a4b58df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 11411106}
-  nameLabel: {fileID: 11411108}
-  icon: {fileID: 11411100}
 --- !u!114 &11411100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +181,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Item
+--- !u!114 &11424182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4001599cd65df5943a9dd1949b4fc079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 11411106}
+  nameLabel: {fileID: 11411108}
+  icon: {fileID: 11411100}
 --- !u!222 &22211104
 CanvasRenderer:
   m_ObjectHideFlags: 1

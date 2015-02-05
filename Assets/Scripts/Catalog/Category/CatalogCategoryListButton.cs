@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CatalogListButton : MonoBehaviour
+public class CatalogCategoryListButton : MonoBehaviour
 {
     public Button button;
     public Text nameLabel;

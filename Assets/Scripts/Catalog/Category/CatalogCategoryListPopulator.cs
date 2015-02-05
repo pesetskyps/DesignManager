@@ -12,12 +12,14 @@ public class CatalogListItem
     public Button.ButtonClickedEvent buttonEvent;
 }
 
-public class CatalogListPopulator : MonoBehaviour
+
+public class CatalogCategoryListPopulator : MonoBehaviour
 {
 
     public GameObject prefabButton;
     public List<CatalogListItem> itemList;
     public Transform contentPanel;
+
     void Start()
     {
         PopulateList();
@@ -28,7 +30,7 @@ public class CatalogListPopulator : MonoBehaviour
         foreach (var item in itemList)
         {
             GameObject newButton = Instantiate(prefabButton) as GameObject;
-            CatalogListButton sampleobj = newButton.GetComponent<CatalogListButton>();
+            CatalogCategoryListButton sampleobj = newButton.GetComponent<CatalogCategoryListButton>();
             sampleobj.nameLabel.text = item.name;
             sampleobj.icon.sprite = item.icon;
             sampleobj.button.interactable = item.isAvaliable;
@@ -41,6 +43,9 @@ public class CatalogListPopulator : MonoBehaviour
 
     public void Eeee()
     {
-        Debug.Log("fddff");
+        List<CatalogItem> items = new List<CatalogItem>();
+        items.Add(new CatalogItem("table", 1, "table", CatalogType.DiningRoom, CatalogSubType.Tables));
+        CatalogDetailsPanelPopulator populator = new CatalogDetailsPanelPopulator();
+        populator.PopulateList(items);
     }
 }
