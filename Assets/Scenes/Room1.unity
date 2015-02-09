@@ -635,14 +635,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabButton: {fileID: 136914, guid: dc395820447bac3468e4f2b359e44d68, type: 2}
   itemList:
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
+  - name: Sofa
+    icon: {fileID: 21300000, guid: bf23ce9f0c7efbc4ab42c831ca28663f, type: 3}
+    catalogType: 2
     isAvaliable: 1
     buttonEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
+          m_MethodName: GetCategoryDetails
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -657,172 +658,13 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   - name: Chair
     icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
+    catalogType: 0
     isAvaliable: 1
     buttonEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-              Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
-    isAvaliable: 1
-    buttonEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-              Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
-    isAvaliable: 1
-    buttonEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-              Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
-    isAvaliable: 1
-    buttonEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-              Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
-    isAvaliable: 1
-    buttonEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-              Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
-    isAvaliable: 1
-    buttonEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-              Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
-    isAvaliable: 1
-    buttonEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-              Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
-    isAvaliable: 1
-    buttonEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-              Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - name: Chair
-    icon: {fileID: 21300000, guid: 36269d0d5aac96a42b0e793d5e617a1c, type: 3}
-    isAvaliable: 1
-    buttonEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 160138222}
-          m_MethodName: Eeee
+          m_MethodName: GetCategoryDetails
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

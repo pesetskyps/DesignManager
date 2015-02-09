@@ -12,21 +12,29 @@ using System.Collections.Generic;
 //    public Button.ButtonClickedEvent buttonEvent;
 //}
 
-public class CatalogDetailsPanelPopulator : MonoBehaviour {
+public class CatalogDetailsPanelPopulator : MonoBehaviour
+{
 
     public GameObject prefabButton;
-    private List<CatalogItem> itemList = new List<CatalogItem>();
     public Transform contentPanel;
-    void Start()
-    {
-        //test
-        
-        //PopulateList();
-    }
 
-    public void PopulateList(List<CatalogItem> itemList)
+    public void PopulateList(CatalogSectionName catalogSection)
     {
-        foreach (var item in itemList)
+       
+        foreach (Transform item in contentPanel)
+        {
+            Destroy(item.gameObject);
+        }
+        List<CatalogItem> items = new List<CatalogItem>();
+        Sprite[] icons = Resources.LoadAll<Sprite>("Catalogs/" + catalogSection.ToString());
+        foreach (var item in icons)
+        {
+
+
+            items.Add(new CatalogItem(item.name, 1, "table", catalogSection, CatalogItemType.Table, item));
+        }
+
+        foreach (var item in items)
         {
             GameObject newButton = Instantiate(prefabButton) as GameObject;
             CatalogDetailsPanelButton sampleobj = newButton.GetComponent<CatalogDetailsPanelButton>();
