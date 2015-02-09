@@ -4,21 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-[System.Serializable]
-public class CatalogListItem
-{
-    public string name;
-    public Sprite icon;
-    public CatalogSectionName catalogType;
-    public bool isAvaliable;
-    public Button.ButtonClickedEvent buttonEvent;
-}
-
 public class CatalogCategoryListPopulator : MonoBehaviour
 {
 
     public GameObject prefabButton;
-    public List<CatalogListItem> itemList;
     public Transform contentPanel;
 
     void Start()
@@ -55,7 +44,7 @@ public class CatalogCategoryListPopulator : MonoBehaviour
         {
             foreach (CatalogItemType itemType in CatalogItem.catalogRelationship[catalogSection])
             {
-                Sprite icon = Resources.Load<Sprite>("SectionMenu/SubClass" + itemType);
+                Sprite icon = Resources.Load<Sprite>("SectionMenu/SubClass/" + itemType);
                 items.Add(new CatalogItem(itemType.ToString(), 1, itemType.ToString(), CatalogSectionName.Null, itemType, icon));
             }
         }
@@ -66,7 +55,8 @@ public class CatalogCategoryListPopulator : MonoBehaviour
             sampleobj.nameLabel.text = catalogItem.itemName;
             sampleobj.catalogType = catalogItem.catalogSectionName;
             sampleobj.icon.sprite = catalogItem.itemIcon;
-            sampleobj.button.onClick.AddListener(() => GetCategoryDetails(catalogItem.itemName));
+            string captured = catalogItem.itemName;
+            sampleobj.button.onClick.AddListener(() => GetCategoryDetails(captured));
             newButton.transform.SetParent(contentPanel, false);
 
             contentPanel.SetAsLastSibling();
@@ -95,13 +85,13 @@ public class CatalogCategoryListPopulator : MonoBehaviour
         }
         if (itemType != CatalogItemType.Null)
         {
-
+            GetComponent<CatalogDetailsPanelPopulator>().PopulateList(itemType);
         }
         else if (section != CatalogSectionName.Null)
         {
             PopulateCatalogList(section);
         }
 
-        GetComponent<CatalogDetailsPanelPopulator>().PopulateList(section);
+
     }
 }

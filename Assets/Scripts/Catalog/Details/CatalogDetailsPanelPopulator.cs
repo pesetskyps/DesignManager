@@ -18,7 +18,7 @@ public class CatalogDetailsPanelPopulator : MonoBehaviour
     public GameObject prefabButton;
     public Transform contentPanel;
 
-    public void PopulateList(CatalogSectionName catalogSection)
+    public void PopulateList(CatalogItemType catalogItemType)
     {
        
         foreach (Transform item in contentPanel)
@@ -26,12 +26,12 @@ public class CatalogDetailsPanelPopulator : MonoBehaviour
             Destroy(item.gameObject);
         }
         List<CatalogItem> items = new List<CatalogItem>();
-        Sprite[] icons = Resources.LoadAll<Sprite>("Catalogs/" + catalogSection.ToString());
+        Sprite[] icons = Resources.LoadAll<Sprite>("Catalog/" + catalogItemType.ToString());
         foreach (var item in icons)
         {
 
 
-            items.Add(new CatalogItem(item.name, 1, "table", catalogSection, CatalogItemType.Table, item));
+            items.Add(new CatalogItem(item.name, 1, item.name, CatalogSectionName.Null, catalogItemType, item));
         }
 
         foreach (var item in items)
