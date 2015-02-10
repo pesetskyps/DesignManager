@@ -9,6 +9,7 @@ public class CatalogCategoryListPopulator : MonoBehaviour
 
     public GameObject prefabButton;
     public Transform contentPanel;
+    public Text contentPanelText;
 
     void Start()
     {
@@ -65,6 +66,13 @@ public class CatalogCategoryListPopulator : MonoBehaviour
 
             contentPanel.SetAsLastSibling();
         }
+		if (catalogSection != CatalogSectionName.Null) {
+			contentPanelText.text = catalogSection.ToString ();
+		}
+		else {
+			contentPanelText.text = "Catalog";
+				}
+
     }
     //CatalogType type
     public void GetCategoryDetails(string catalogSection)
