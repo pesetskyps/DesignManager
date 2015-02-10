@@ -39,7 +39,8 @@ public enum CatalogItemType
     SofaBed,
     Stool,
     Table,
-    Wardrobe
+    Wardrobe,
+	Bar
 
 }
 

@@ -13,8 +13,8 @@ public class CatalogCategoryListPopulator : MonoBehaviour
     void Start()
     {
         CatalogItem.catalogRelationship.Add(CatalogSectionName.DiningRoom, new List<CatalogItemType>() { CatalogItemType.Chair, CatalogItemType.Clock, 
-                                            CatalogItemType.CoffeeTable, CatalogItemType.Table });
-        CatalogItem.catalogRelationship.Add(CatalogSectionName.Kitchen, new List<CatalogItemType>() { CatalogItemType.Cupboard, CatalogItemType.Stool, CatalogItemType.Table });
+			CatalogItemType.CoffeeTable, CatalogItemType.Table, CatalogItemType.Bar, CatalogItemType.Mirror });
+		CatalogItem.catalogRelationship.Add(CatalogSectionName.Kitchen, new List<CatalogItemType>() { CatalogItemType.Cupboard, CatalogItemType.Stool, CatalogItemType.Table });
         CleanCategoryListPanel();
         PopulateCatalogList(CatalogSectionName.Null);
 
@@ -27,6 +27,10 @@ public class CatalogCategoryListPopulator : MonoBehaviour
             Destroy(item.gameObject);
         }
     }
+
+	public void PopulateCatalogList() {
+		PopulateCatalogList (CatalogSectionName.Null);
+	}
 
     void PopulateCatalogList(CatalogSectionName catalogSection)
     {

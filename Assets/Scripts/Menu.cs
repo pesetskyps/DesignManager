@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour {
 		_canvasGroup = GetComponent<CanvasGroup> ();
 
 		var rect = GetComponent<RectTransform> ();
-		rect.offsetMax = rect.offsetMin = new Vector2 (0, 0);
+		//rect.offsetMax = rect.offsetMin = new Vector2 (0, 0);
 	}
 
 	public void Update(){
