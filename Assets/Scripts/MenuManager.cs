@@ -2,19 +2,25 @@
 using System.Collections;
 
 public class MenuManager : MonoBehaviour {
-	public Menu CurrentMenu;
+    private GameObject[] _menus;
 	// Use this for initialization
 	void Start () {
-		if (CurrentMenu != null)
-			ShowMenu (CurrentMenu);
+        _menus = GameObject.FindGameObjectsWithTag("Menu");
+        HideAllMenus();
 	}
 
 	public void ShowMenu(Menu menu)
 	{
-		if (CurrentMenu != null)
-			CurrentMenu.IsOpen = false;
-
-		CurrentMenu = menu;
-		CurrentMenu.IsOpen = true;
+        HideAllMenus();
+        menu.IsOpen = true;
 	}
+
+    void HideAllMenus()
+    {
+        foreach (GameObject item in _menus)
+        {
+            Menu menutmp = item.GetComponent<Menu>();
+            menutmp.IsOpen = false;
+        }
+    }
 }

@@ -65,9 +65,4 @@ public class CatalogItem {
         //itemIcon = Resources.Load<Sprite>("Catalog/" + name);
         itemIcon = icon;
     }
-
-    public List<CatalogItemType> GetCatalogRelationship(CatalogSectionName section) 
-    {
-        return catalogRelationship[section];
-    }
 }
