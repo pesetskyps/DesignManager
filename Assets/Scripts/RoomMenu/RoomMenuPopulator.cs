@@ -11,6 +11,8 @@ public class RoomMenuPopulator : MonoBehaviour {
         Features[] features = { Features.GoodNeighbours, Features.SeaView };
         Bugs[] bugs = { Bugs.BadElectricity };
         rooms.Add(new Room(1, "Room1", 1200, 2, bugs, features));
+        Features[] features2 = { Features.GoodNeighbours };
+        rooms.Add(new Room(1, "Room2", 1200, 5, bugs, features2));
         PopulateList();
     }
 
@@ -44,6 +46,9 @@ public class RoomMenuPopulator : MonoBehaviour {
             }
             sampleobj.roomBugs.text = bugs;
             sampleobj.roomFeatures.text = features;
+            var roomName = room.roomName;
+            sampleobj.roombutton.onClick.AddListener(() => LoadSceneOnClick.LoadScene(roomName));
+
             newButton.transform.SetParent(contentPanel, false);
             contentPanel.SetAsLastSibling();
         }

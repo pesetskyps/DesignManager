@@ -60,8 +60,8 @@ public class CatalogCategoryListPopulator : MonoBehaviour
             sampleobj.nameLabel.text = catalogItem.itemName;
             sampleobj.catalogType = catalogItem.catalogSectionName;
             sampleobj.icon.sprite = catalogItem.itemIcon;
-            string captured = catalogItem.itemName;
-            sampleobj.button.onClick.AddListener(() => GetCategoryDetails(captured));
+            string categoryName = catalogItem.itemName;
+            sampleobj.button.onClick.AddListener(() => GetCategoryDetails(categoryName));
             newButton.transform.SetParent(contentPanel, false);
 
             contentPanel.SetAsLastSibling();
