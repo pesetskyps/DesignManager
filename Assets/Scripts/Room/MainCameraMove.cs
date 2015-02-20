@@ -254,4 +254,9 @@ public class MainCameraMove : MonoBehaviour
         selectedObjects.Clear();
         selectedObjectsMaterial.Clear();
     }
+
+    public void BackToZero()
+    {
+        transform.position = new Vector3(-1, 13, -8);
+    }
 }
