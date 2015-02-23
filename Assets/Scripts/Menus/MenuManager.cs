@@ -3,24 +3,50 @@ using System.Collections;
 
 public class MenuManager : MonoBehaviour {
     private GameObject[] _menus;
-    private Menu _currentMenu;
-    public Menu CurrentMenu
+    private string _currentMenu;
+    private int test;
+
+    public int MyProperty { get { return test; } set { test = value; } }
+    public string CurrentMenu
     {
         get { return _currentMenu; }
         set { _currentMenu = value; }
     }
-	// Use this for initialization
-	void Start () {
+
+    void Start()
+    {
         _menus = GameObject.FindGameObjectsWithTag("Menu");
         HideAllMenus();
-	}
+    }
 
-	public void ShowMenu(Menu menu)
-	{
+
+    private static MenuManager instance = null;
+    public static MenuManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<MenuManager>();
+            }
+            return instance;
+        }
+    }
+
+    public void ShowMenu(Menu menu)
+    {
+        test = Random.Range(1, 100);
         HideAllMenus();
-        _currentMenu = menu;
+        var menuName = menu.transform.name;
+        _currentMenu = menuName;
         menu.IsOpen = true;
-	}
+    }
+
+    public void HideMenu(Menu menu)
+    {
+        _currentMenu = null;
+        menu.IsOpen = false;
+    }
 
     void HideAllMenus()
     {

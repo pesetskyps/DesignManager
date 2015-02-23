@@ -1,22 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class BadElectricity : MonoBehaviour
+public class BadElectricity : MonoBehaviour, IPointerEnterHandler
 {
-    public GameObject tooltip;
+    public Menu tooltip;
+    
+    private bool PanelIsActive;
 
     void Update()
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000) && hit.transform.tag == "Bug")
+        //var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
+        
+        //if (Physics.Raycast(ray, out hit, 1000) && hit.transform.tag == "Bug")
+        //{
+        //    StartCoroutine(SetActivePanel());
+        //}
+        //else if (!PanelIsActive && !tooltip.IsHovered)
+        //{
+        //    GameManager.HideMenu(tooltip);
+        //}
+
+        if (!PanelIsActive && !tooltip.IsHovered)
         {
-            tooltip.SetActive(true);
-            tooltip.GetComponent<RectTransform>().localPosition = new Vector3(transform.position.x + 360, transform.position.y, transform.position.z);
+            GameManager.Instance.HideMenu(tooltip);
         }
-        else
-        {
-            tooltip.SetActive(false);
-        }
+    }
+
+    IEnumerator SetActivePanel()
+    {
+        PanelIsActive = true;
+        GameManager.Instance.ShowMenu(tooltip);
+        yield return new WaitForSeconds(2f);
+        PanelIsActive = false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+            StartCoroutine(SetActivePanel());        
     }
 }

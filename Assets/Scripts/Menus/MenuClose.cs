@@ -8,7 +8,7 @@ public class MenuClose : MonoBehaviour {
         var canvases = GameObject.FindGameObjectsWithTag("Canvas");
         foreach (var canvas in canvases)
         {
-            canvas.GetComponent<MenuManager>().CurrentMenu = null;
+            MenuManager.Instance.CurrentMenu = null;
         }
 	}
 }

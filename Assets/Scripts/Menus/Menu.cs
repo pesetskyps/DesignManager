@@ -1,14 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class Menu : MonoBehaviour {
+public class Menu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
 	private Animator _animator;
 	private CanvasGroup _canvasGroup;
+
+    private bool _isHovered;
 
 	public bool IsOpen {
 		get {return _animator.GetBool("IsOpen");}
 		set {_animator.SetBool("IsOpen",value);}
 	}
+
+    public bool IsHovered
+    {
+        get { return _isHovered; }
+        //set { _isHovered = value; }
+    }
 
 	public void Awake() {
 		_animator = GetComponent<Animator> ();
@@ -28,4 +38,14 @@ public class Menu : MonoBehaviour {
 			_canvasGroup.alpha = 1;
 		}
 	}
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _isHovered = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _isHovered = false;
+    }
 }

@@ -38,9 +38,6 @@ public class MainCameraMove : MonoBehaviour
     private ArrayList selectedObjects = new ArrayList();
     private ArrayList selectedObjectsMaterial = new ArrayList();
 
-    private MenuManager menuManager;
-
-
     // Some construction work
     void Start()
     {
@@ -68,8 +65,6 @@ public class MainCameraMove : MonoBehaviour
             materialForSelection = new Material(Shader.Find("Diffuse"));
             materialForSelection.color = Color.green;
         }
-
-        menuManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<MenuManager>();
     }
 
 
@@ -84,7 +79,9 @@ public class MainCameraMove : MonoBehaviour
         var y = Input.GetAxis("Mouse Y");
 
         //If some menu open, stop navigation
-        if (menuManager.CurrentMenu == null)
+        //Debug.Log(MenuManager.Instance.MyProperty);
+        Debug.Log("MenuManager " + MenuManager.Instance.CurrentMenu);
+        if (MenuManager.Instance.CurrentMenu == null)
         {
             // ALT is pressed, start navigation
             if (Input.GetKey(KeyCode.RightAlt) || Input.GetKey(KeyCode.LeftAlt))
@@ -171,23 +168,27 @@ public class MainCameraMove : MonoBehaviour
                         deselectAll();
                     }
 
-                    //Toggle between selected and unselected (depending on current state)
-                    if (target.renderer.sharedMaterial != materialForSelection)
+                    //if renderer attached
+                    if (target.renderer != null)
                     {
-                        selectedObjects.Add(target.gameObject);
-                        selectedObjectsMaterial.Add(target.gameObject.renderer.sharedMaterial);
-                        target.gameObject.renderer.sharedMaterial = materialForSelection;
+                        //Toggle between selected and unselected (depending on current state)
+                        if (target.renderer.sharedMaterial != materialForSelection)
+                        {
+                            selectedObjects.Add(target.gameObject);
+                            selectedObjectsMaterial.Add(target.gameObject.renderer.sharedMaterial);
+                            target.gameObject.renderer.sharedMaterial = materialForSelection;
 
-                    }
-                    else
-                    {
-                        int arrayLocation = selectedObjects.IndexOf(target.gameObject);
-                        if (arrayLocation == -1) { return; }; //this shouldn't happen. Ever. But still.
+                        }
+                        else
+                        {
+                            int arrayLocation = selectedObjects.IndexOf(target.gameObject);
+                            if (arrayLocation == -1) { return; }; //this shouldn't happen. Ever. But still.
 
-                        target.gameObject.renderer.sharedMaterial = (Material)selectedObjectsMaterial[arrayLocation];
-                        selectedObjects.RemoveAt(arrayLocation);
-                        selectedObjectsMaterial.RemoveAt(arrayLocation);
+                            target.gameObject.renderer.sharedMaterial = (Material)selectedObjectsMaterial[arrayLocation];
+                            selectedObjects.RemoveAt(arrayLocation);
+                            selectedObjectsMaterial.RemoveAt(arrayLocation);
 
+                        }
                     }
 
                     // Else deselect all selected objects (ie. click on empty background)
