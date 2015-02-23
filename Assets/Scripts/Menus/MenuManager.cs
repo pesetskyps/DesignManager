@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuManager : MonoBehaviour {
+public class MenuManager : MonoBehaviour
+{
     private GameObject[] _menus;
-    private string _currentMenu;
+    private Menu _currentMenu;
     private int test;
 
     public int MyProperty { get { return test; } set { test = value; } }
-    public string CurrentMenu
+    public Menu CurrentMenu
     {
         get { return _currentMenu; }
         set { _currentMenu = value; }
@@ -15,6 +16,7 @@ public class MenuManager : MonoBehaviour {
 
     void Start()
     {
+        instance = GameObject.FindObjectOfType<MenuManager>();
         _menus = GameObject.FindGameObjectsWithTag("Menu");
         HideAllMenus();
     }
@@ -37,15 +39,17 @@ public class MenuManager : MonoBehaviour {
     {
         test = Random.Range(1, 100);
         HideAllMenus();
-        var menuName = menu.transform.name;
-        _currentMenu = menuName;
+        _currentMenu = menu;
         menu.IsOpen = true;
     }
 
     public void HideMenu(Menu menu)
     {
-        _currentMenu = null;
-        menu.IsOpen = false;
+        if (_currentMenu == menu)
+        {
+            _currentMenu = null;
+            menu.IsOpen = false;
+        }
     }
 
     void HideAllMenus()
