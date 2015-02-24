@@ -55,8 +55,12 @@ public class RoomMenuPopulator : MonoBehaviour {
     {
         SaveRoomSettings();
         var room = GameManager.Instance.currentRoom;
-        var roomobj = GameObject.Find(room.roomName);
-        Destroy(roomobj);
+        var roomobjs = GameObject.FindGameObjectsWithTag("Room");
+        foreach (var roomobj in roomobjs)
+        {
+            Destroy(roomobj);
+        }
+        
         var newRoomPrefab = Resources.Load<GameObject>("Levels/Rooms/" + roomname + "/" + roomname);
         if (newRoomPrefab != null)
         {
