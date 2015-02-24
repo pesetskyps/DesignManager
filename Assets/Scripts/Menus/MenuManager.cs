@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : Singleton<MenuManager>
 {
     private GameObject[] _menus;
     private Menu _currentMenu;
-    private int test;
 
-    public int MyProperty { get { return test; } set { test = value; } }
     public Menu CurrentMenu
     {
         get { return _currentMenu; }
@@ -37,9 +35,8 @@ public class MenuManager : MonoBehaviour
 
     public void ShowMenu(Menu menu)
     {
-        test = Random.Range(1, 100);
         HideAllMenus();
-        _currentMenu = menu;
+        CurrentMenu = menu;
         menu.IsOpen = true;
     }
 
@@ -47,7 +44,7 @@ public class MenuManager : MonoBehaviour
     {
         if (_currentMenu == menu)
         {
-            _currentMenu = null;
+            CurrentMenu = null;
             menu.IsOpen = false;
         }
     }
@@ -61,7 +58,7 @@ public class MenuManager : MonoBehaviour
                 Menu menutmp = item.GetComponent<Menu>();
                 menutmp.IsOpen = false;
             }
-            _currentMenu = null;
+            CurrentMenu = null;
         }
     }
 }

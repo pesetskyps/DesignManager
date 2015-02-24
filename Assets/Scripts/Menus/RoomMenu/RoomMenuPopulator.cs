@@ -6,13 +6,9 @@ public class RoomMenuPopulator : MonoBehaviour {
 
     public GameObject prefabButton;
     public Transform contentPanel;
-    List<Room> rooms = new List<Room>();
+    List<Room> rooms;
     void Start() {
-        Features[] features = { Features.GoodNeighbours, Features.SeaView };
-        Bugs[] bugs = { Bugs.BadElectricity };
-        rooms.Add(new Room(1, "Room1", 1200, 2, bugs, features));
-        Features[] features2 = { Features.GoodNeighbours };
-        rooms.Add(new Room(1, "Room2", 1200, 5, bugs, features2));
+        rooms = GameManager.Instance.rooms;
         PopulateList();
     }
 

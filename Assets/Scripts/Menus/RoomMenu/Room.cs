@@ -1,10 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum Bugs
 {
     BadElectricity,
     Termites
+}
+
+public class Bug
+{
+    public string Description { get; set; }
+    public string Name { get; set; }
+    public int CostToFix { get; set; }
+    public string ImageResourcePath { get; set; }
 }
 
 public enum Features

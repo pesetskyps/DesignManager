@@ -17,7 +17,7 @@ public class Menu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public bool IsHovered
     {
         get { return _isHovered; }
-        //set { _isHovered = value; }
+        set { _isHovered = value; }
     }
 
 	public void Awake() {
@@ -41,11 +41,11 @@ public class Menu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _isHovered = true;
+        IsHovered = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _isHovered = false;
+        IsHovered = false;
     }
 }
