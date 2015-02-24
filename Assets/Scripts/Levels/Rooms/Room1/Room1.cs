@@ -19,9 +19,9 @@ public class Room1 : MonoBehaviour
         var gmRoom = GameManager.Instance.rooms.Find(r => r.roomName == roomName);
         if (gmRoom != null)
         {
+            GameManager.Instance.currentRoom = gmRoom;
             roomFeatures = gmRoom.roomFeatures;
             roomBugs = gmRoom.roomBugs;
-            Debug.Log(roomFeatures);
         }
     }
 }

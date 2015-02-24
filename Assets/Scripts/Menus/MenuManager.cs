@@ -15,23 +15,22 @@ public class MenuManager : Singleton<MenuManager>
     void Start()
     {
         instance = GameObject.FindObjectOfType<MenuManager>();
-        _menus = GameObject.FindGameObjectsWithTag("Menu");
         HideAllMenus();
     }
 
 
-    private static MenuManager instance = null;
-    public static MenuManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<MenuManager>();
-            }
-            return instance;
-        }
-    }
+    //private static MenuManager instance = null;
+    //public static MenuManager Instance
+    //{
+    //    get
+    //    {
+    //        if (instance == null)
+    //        {
+    //            instance = GameObject.FindObjectOfType<MenuManager>();
+    //        }
+    //        return instance;
+    //    }
+    //}
 
     public void ShowMenu(Menu menu)
     {
@@ -51,6 +50,7 @@ public class MenuManager : Singleton<MenuManager>
 
     void HideAllMenus()
     {
+        _menus = GameObject.FindGameObjectsWithTag("Menu");
         if (_menus != null)
         {
             foreach (GameObject item in _menus)

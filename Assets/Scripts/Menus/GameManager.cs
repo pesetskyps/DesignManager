@@ -6,8 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public List<Room> rooms = new List<Room>();
     public Dictionary<Bugs, Bug> bugs = new Dictionary<Bugs, Bug>();
+    public Room currentRoom;
     void Awake(){
-        rooms.Add(new Room(1, "Room1", 1200, 2, new Bugs[] { Bugs.BadElectricity }, new Features[] { Features.GoodNeighbours, Features.SeaView }));
+        rooms.Add(new Room(1, "Room1", 1200, 2, new Bugs[] { Bugs.BadElectricity,Bugs.Termites }, new Features[] { Features.GoodNeighbours, Features.SeaView }));
         rooms.Add(new Room(2, "Room2", 1200, 5, new Bugs[] { Bugs.BadElectricity }, new Features[] { Features.GoodNeighbours}));
         InitBugs();
     }

@@ -6,33 +6,52 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
 {
     public GameObject prefab;
     public Bugs bugType;
-    
+
     private Menu tooltip;
     private bool PanelIsActive;
     private Bug bug;
-
+    private GameObject newButton;
+    private GameObject _canvas;
+    private GameManager gameManager;
     void Start()
     {
-        var gameManager = GameManager.Instance;
+        gameManager = GameManager.Instance;
+    }
 
-        //if bug exists than set all the values for the tooltip
-        if (gameManager.bugs.TryGetValue(bugType, out bug))
+    private void CreateTooltip()
+    {
+        newButton = Instantiate(prefab) as GameObject;
+
+        tooltipMenu sampleobj = newButton.GetComponent<tooltipMenu>();
+        sampleobj.tooltipName.text = bug.Name;
+        sampleobj.tooltipImage.sprite = Resources.Load<Sprite>(bug.ImageResourcePath);
+        sampleobj.tooltipDescription.text = bug.Description;
+
+        _canvas = GameObject.FindGameObjectWithTag("RoomCanvas");
+
+        if (_canvas != null)
         {
-            GameObject newButton = Instantiate(prefab) as GameObject;
-            tooltipMenu sampleobj = newButton.GetComponent<tooltipMenu>();
-            sampleobj.tooltipName.text = bug.Name;
-            sampleobj.tooltipImage.sprite = Resources.Load<Sprite>(bug.ImageResourcePath);
-            sampleobj.tooltipDescription.text = bug.Description;
-
-            var _canvas = GameObject.FindGameObjectWithTag("Canvas");
-            if (_canvas != null)
-            {
-                newButton.transform.SetParent(_canvas.transform, false);
-                _canvas.transform.SetAsLastSibling();
-            }
-
-            tooltip = sampleobj.GetComponent<Menu>();
+            newButton.transform.SetParent(_canvas.transform, false);
+            _canvas.transform.SetAsLastSibling();
         }
+
+        tooltip = sampleobj.GetComponent<Menu>();
+
+
+        ////set position
+        //var _camera = GameObject.FindGameObjectWithTag("MainCamera");
+        //var tooltipRect = newButton.GetComponent<RectTransform>();
+        //var screenPoint = _camera.camera.WorldToScreenPoint(transform.position);
+        ////screenPoint.x = screenPoint.x / Screen.width;
+        //screenPoint.x = Input.mousePosition.x / Screen.width;
+
+        ////screenPoint.y = screenPoint.y / Screen.height;
+        //screenPoint.y = Input.mousePosition.y / Screen.height;
+
+        ////var screenPoint = new Vector2(transform.position.x, transform.position.y);
+        //Vector2 localPoint;
+        //RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.GetComponent<RectTransform>(), screenPoint, null, out localPoint);
+        //tooltipRect.anchoredPosition = localPoint;
     }
 
     void Update()
@@ -48,9 +67,20 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
 
     IEnumerator SetActivePanel()
     {
+        if (tooltip == null)
+        {
+            //if bug exists than set all the values for the tooltip
+            if (gameManager.bugs.TryGetValue(bugType, out bug))
+            {
+                CreateTooltip();
+            }
+        }
+
         if (tooltip != null)
         {
             PanelIsActive = true;
+
+
             GameManager.Instance.ShowMenu(tooltip);
             yield return new WaitForSeconds(2f);
             PanelIsActive = false;

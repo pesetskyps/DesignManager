@@ -27,6 +27,7 @@ public class RoomMenuPopulator : MonoBehaviour {
 
             //sampleobj.roomName = room.roomName;
             sampleobj.roomCost.text = room.roomCost.ToString();
+            sampleobj.roomName.text = room.roomName;
             sampleobj.roomStarsImg.sprite = room.roomStarsImg;
             sampleobj.roomImg.sprite = room.roomImg;
 
@@ -43,10 +44,29 @@ public class RoomMenuPopulator : MonoBehaviour {
             sampleobj.roomBugs.text = bugs;
             sampleobj.roomFeatures.text = features;
             var roomName = room.roomName;
-            sampleobj.roombutton.onClick.AddListener(() => LoadSceneOnClick.LoadScene(roomName));
+            sampleobj.roombutton.onClick.AddListener(() => LoadRoomOnClick(roomName));
 
             newButton.transform.SetParent(contentPanel, false);
             contentPanel.SetAsLastSibling();
         }
+    }
+
+    public void LoadRoomOnClick(string roomname)
+    {
+        SaveRoomSettings();
+        var room = GameManager.Instance.currentRoom;
+        var roomobj = GameObject.Find(room.roomName);
+        Destroy(roomobj);
+        var newRoomPrefab = Resources.Load<GameObject>("Levels/Rooms/" + roomname + "/" + roomname);
+        if (newRoomPrefab != null)
+        {
+            var newRoomGameObj = Instantiate(newRoomPrefab) as GameObject;
+        }
+
+    }
+
+    private void SaveRoomSettings()
+    {
+        //throw new System.NotImplementedException();
     }
 }
