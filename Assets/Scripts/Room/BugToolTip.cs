@@ -13,9 +13,18 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     private GameObject newButton;
     private GameObject _canvas;
     private GameManager gameManager;
+    private GameObject mainCamera;
+    private MainCameraMove mainCameraMoveScript;
+    RoomCustomization roomCustomizationScript;
+
     void Start()
     {
         gameManager = GameManager.Instance;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        if (mainCamera != null)
+        {
+            mainCameraMoveScript = mainCamera.GetComponent<MainCameraMove>();
+        }
     }
 
     private void CreateTooltip()
@@ -36,7 +45,6 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         }
 
         tooltip = sampleobj.GetComponent<Menu>();
-
 
         ////set position
         //var _camera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -67,23 +75,42 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
 
     IEnumerator SetActivePanel()
     {
-        if (tooltip == null)
+        // if we don't enter edit mode in scene. This is done to exclude popup tooltip 
+        // while moving the camera
+        if (!mainCameraMoveScript.IsEditModeKeyPressed())
         {
-            //if bug exists than set all the values for the tooltip
-            if (gameManager.bugs.TryGetValue(bugType, out bug))
+            if (tooltip == null)
             {
-                CreateTooltip();
+                //if bug exists than set all the values for the tooltip
+                if (gameManager.bugs.TryGetValue(bugType, out bug))
+                {
+                    CreateTooltip();
+                    AddBugToRoomFoundBugs();
+                }
+            }
+
+            if (tooltip != null)
+            {
+                PanelIsActive = true;
+                GameManager.Instance.ShowMenu(tooltip);
+                yield return new WaitForSeconds(2f);
+                PanelIsActive = false;
             }
         }
+    }
 
-        if (tooltip != null)
+    private void AddBugToRoomFoundBugs()
+    {
+
+        var room = GameObject.FindGameObjectWithTag("Room");
+        if (room != null)
         {
-            PanelIsActive = true;
+            roomCustomizationScript = room.GetComponent<RoomCustomization>();
+        }
 
-
-            GameManager.Instance.ShowMenu(tooltip);
-            yield return new WaitForSeconds(2f);
-            PanelIsActive = false;
+        if (roomCustomizationScript != null)
+        {
+            roomCustomizationScript.AddBugToFoundBugs(bug);
         }
     }
 

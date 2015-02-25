@@ -41,7 +41,6 @@ public class MainCameraMove : MonoBehaviour
     // Some construction work
     void Start()
     {
-
         // Create a capsule (which will be the lookAt target and global orbit vector)
         orbitVector = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         orbitVector.transform.position = Vector3.zero;
@@ -84,7 +83,7 @@ public class MainCameraMove : MonoBehaviour
         if (MenuManager.Instance.CurrentMenu == null)
         {
             // ALT is pressed, start navigation
-            if (Input.GetKey(KeyCode.RightAlt) || Input.GetKey(KeyCode.LeftAlt))
+            if (IsEditModeKeyPressed())
             {
 
                 // Distance between camera and orbitVector. We'll need this in a few places
@@ -236,6 +235,11 @@ public class MainCameraMove : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool IsEditModeKeyPressed()
+    {
+        return Input.GetKey(KeyCode.RightAlt) || Input.GetKey(KeyCode.LeftAlt);
     }
 
 

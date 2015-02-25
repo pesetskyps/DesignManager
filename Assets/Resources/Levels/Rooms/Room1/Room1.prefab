@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a583a1e6c98a2b8418524bab0b611a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 
+  roomName: Room1
   roomCost: 0
   roomBugs: 
   roomFeatures: 

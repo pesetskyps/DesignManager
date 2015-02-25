@@ -12,8 +12,23 @@ public class Bug
 {
     public string Description { get; set; }
     public string Name { get; set; }
-    public int CostToFix { get; set; }
+    public int CheapCostToFix { get; set; }
+    public int EliteCostToFix { get; set; }
+    public string CheapCostToFixImageResourcePath { get; set; }
+    public string EliteCostToFixImageResourcePath { get; set; }
     public string ImageResourcePath { get; set; }
+
+    public Bug(string Name, string desc, int cheapfix, int elitefix, string cheapfixImagePath,
+        string eliteCostToFixImageResourcePath, string imageResoursePath)
+    {
+        Description = desc;
+        this.Name = Name;
+        CheapCostToFix = cheapfix;
+        EliteCostToFix = elitefix;
+        CheapCostToFixImageResourcePath = cheapfixImagePath;
+        EliteCostToFixImageResourcePath = eliteCostToFixImageResourcePath;
+        ImageResourcePath = imageResoursePath;
+    }
 }
 
 public enum Features

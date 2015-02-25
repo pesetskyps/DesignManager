@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class Room1 : MonoBehaviour
+public class RoomCustomization : MonoBehaviour
 {
-
-    [HideInInspector]
     public string roomName;
     [HideInInspector]
     public int roomCost;
@@ -13,9 +12,12 @@ public class Room1 : MonoBehaviour
     [HideInInspector]
     public Features[] roomFeatures;
 
+    public List<Bug> FoundBugs = new List<Bug>();
+    public delegate void BugFoundEventHandler();
+    public static event BugFoundEventHandler onBugFound;
+
     void Start()
     {
-        roomName = "Room1";
         var gmRoom = GameManager.Instance.rooms.Find(r => r.roomName == roomName);
         if (gmRoom != null)
         {
@@ -23,5 +25,11 @@ public class Room1 : MonoBehaviour
             roomFeatures = gmRoom.roomFeatures;
             roomBugs = gmRoom.roomBugs;
         }
+    }
+
+    public void AddBugToFoundBugs(Bug bug){
+        FoundBugs.Add(bug);
+        if (onBugFound != null)
+            onBugFound();
     }
 }
