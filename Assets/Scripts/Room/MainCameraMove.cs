@@ -251,8 +251,11 @@ public class MainCameraMove : MonoBehaviour
         // Run through the list of selected objects and restore their original materials
         for (var currentItem = 0; currentItem < selectedObjects.Count; currentItem++)
         {
-            GameObject selectedObject = (GameObject)selectedObjects[currentItem];
-            selectedObject.renderer.sharedMaterial = (Material)selectedObjectsMaterial[currentItem];
+            if (currentItem != null)
+            {
+                GameObject selectedObject = (GameObject)selectedObjects[currentItem];
+                selectedObject.renderer.sharedMaterial = (Material)selectedObjectsMaterial[currentItem];
+            }
         }
 
         // Clear both arrays

@@ -8,6 +8,8 @@ TagManager:
   - Bug
   - RoomCanvas
   - Room
+  - TempCamera
+  - temp
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

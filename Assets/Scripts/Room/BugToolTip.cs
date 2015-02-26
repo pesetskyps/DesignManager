@@ -14,6 +14,8 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     private GameObject _canvas;
     private GameManager gameManager;
     private GameObject mainCamera;
+    private GameObject tempCameraObj;
+    private Camera roomCamera;
     private MainCameraMove mainCameraMoveScript;
     RoomCustomization roomCustomizationScript;
 
@@ -21,13 +23,14 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     {
         gameManager = GameManager.Instance;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
         if (mainCamera != null)
         {
             mainCameraMoveScript = mainCamera.GetComponent<MainCameraMove>();
         }
     }
 
-    private void CreateTooltip()
+    private void CreateTooltip(PointerEventData data)
     {
         newButton = Instantiate(prefab) as GameObject;
 
@@ -42,24 +45,28 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         {
             newButton.transform.SetParent(_canvas.transform, false);
             _canvas.transform.SetAsLastSibling();
+
+            tempCameraObj = GameObject.FindGameObjectWithTag("TempCamera");
+            //set position
+            var tooltipRect = newButton.GetComponent<RectTransform>();
+            var canvasRect = _canvas.GetComponent<RectTransform>();
+            if (tempCameraObj != null)
+            {
+                roomCamera = tempCameraObj.GetComponent<Camera>();
+            }
+            Vector2 localPointerPosition;
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvasRect, data.position, roomCamera, out localPointerPosition
+            ))
+            {
+                tooltipRect.localPosition = localPointerPosition;
+            }
+
         }
 
         tooltip = sampleobj.GetComponent<Menu>();
 
-        ////set position
-        //var _camera = GameObject.FindGameObjectWithTag("MainCamera");
-        //var tooltipRect = newButton.GetComponent<RectTransform>();
-        //var screenPoint = _camera.camera.WorldToScreenPoint(transform.position);
-        ////screenPoint.x = screenPoint.x / Screen.width;
-        //screenPoint.x = Input.mousePosition.x / Screen.width;
 
-        ////screenPoint.y = screenPoint.y / Screen.height;
-        //screenPoint.y = Input.mousePosition.y / Screen.height;
-
-        ////var screenPoint = new Vector2(transform.position.x, transform.position.y);
-        //Vector2 localPoint;
-        //RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.GetComponent<RectTransform>(), screenPoint, null, out localPoint);
-        //tooltipRect.anchoredPosition = localPoint;
     }
 
     void Update()
@@ -73,7 +80,7 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         }
     }
 
-    IEnumerator SetActivePanel()
+    IEnumerator SetActivePanel(PointerEventData eventData)
     {
         // if we don't enter edit mode in scene. This is done to exclude popup tooltip 
         // while moving the camera
@@ -84,7 +91,7 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
                 //if bug exists than set all the values for the tooltip
                 if (gameManager.bugs.TryGetValue(bugType, out bug))
                 {
-                    CreateTooltip();
+                    CreateTooltip(eventData);
                     AddBugToRoomFoundBugs();
                 }
             }
@@ -114,9 +121,10 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData data)
     {
         // StartCoroutine is used to give time to the user to hover over the tooltip itself. 
-        StartCoroutine(SetActivePanel());
+        StartCoroutine(SetActivePanel(data));
+
     }
 }
