@@ -15,6 +15,7 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     private GameManager gameManager;
     private GameObject mainCamera;
     private GameObject tempCameraObj;
+    private GameObject BugMenu;
     private Camera roomCamera;
     private MainCameraMove mainCameraMoveScript;
     RoomCustomization roomCustomizationScript;
@@ -23,6 +24,7 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     {
         gameManager = GameManager.Instance;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        BugMenu = GameObject.Find("BugMenu");
 
         if (mainCamera != null)
         {
@@ -39,6 +41,15 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         sampleobj.tooltipImage.sprite = Resources.Load<Sprite>(bug.ImageResourcePath);
         sampleobj.tooltipDescription.text = bug.Description;
 
+        if (BugMenu != null)
+        {
+            var bugMenuMenu = BugMenu.GetComponent<Menu>();
+            if (bugMenuMenu != null)
+            {
+                sampleobj.tooltipDetailsButton.onClick.AddListener(() => gameManager.ShowMenu(bugMenuMenu));
+            }
+        }
+
         _canvas = GameObject.FindGameObjectWithTag("RoomCanvas");
 
         if (_canvas != null)
@@ -50,23 +61,22 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
             //set position
             var tooltipRect = newButton.GetComponent<RectTransform>();
             var canvasRect = _canvas.GetComponent<RectTransform>();
+            
+            //without camera the position will be set to incorrect high values. So we need this check
             if (tempCameraObj != null)
             {
                 roomCamera = tempCameraObj.GetComponent<Camera>();
+                Vector2 localPointerPosition;
+                if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                    canvasRect, data.position, roomCamera, out localPointerPosition
+                ))
+                {
+                    tooltipRect.localPosition = localPointerPosition;
+                }
             }
-            Vector2 localPointerPosition;
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvasRect, data.position, roomCamera, out localPointerPosition
-            ))
-            {
-                tooltipRect.localPosition = localPointerPosition;
-            }
-
         }
 
         tooltip = sampleobj.GetComponent<Menu>();
-
-
     }
 
     void Update()
