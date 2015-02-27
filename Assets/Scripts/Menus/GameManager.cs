@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
         bugs.Add(Bugs.BadElectricity, new Bug("Bad Electricity", Description, 1200, 3200,
             "Bugs/BadElectricity/CheapCostToFix",
             "Bugs/BadElectricity/EliteCostToFix",
-            "Images/BadElectricity"
+            "Images/BadElectricity",
+		    120,
+		    60
             ));
         
         bugs.Add(Bugs.Termites, new Bug("Termites", 
@@ -28,7 +30,9 @@ public class GameManager : MonoBehaviour
             1500, 2200,
             "Bugs/BadElectricity/CheapCostToFix",
             "Bugs/BadElectricity/EliteCostToFix",
-            "Images/BadElectricity"
+            "Images/BadElectricity",
+	        3600,
+	        1200
             ));
     }
 

@@ -79,7 +79,6 @@ public class MainCameraMove : MonoBehaviour
 
         //If some menu open, stop navigation
         //Debug.Log(MenuManager.Instance.MyProperty);
-        Debug.Log("MenuManager " + MenuManager.Instance.CurrentMenu);
         if (MenuManager.Instance.CurrentMenu == null)
         {
             // ALT is pressed, start navigation
