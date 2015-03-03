@@ -7,6 +7,7 @@ UnityGenerated/
 Library/
 Assets/AssetStoreTools*
 
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
@@ -20,6 +21,31 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+
+Assembly-CSharp-Editor-DesignManager-vs.csproj
+Assembly-CSharp-Editor-DesignManager.csproj
+Assembly-CSharp-Editor-DesignManager.pidb
+Assembly-CSharp-Editor-vs.csproj
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp-Editor.pidb
+Assembly-CSharp-DesignManager-vs.csproj
+Assembly-CSharp-DesignManager.csproj
+Assembly-CSharp-DesignManager.pidb
+Assembly-CSharp-vs.csproj
+Assembly-CSharp.csproj
+Assembly-CSharp.pidb
+Assembly-UnityScript-Editor-DesignManager-vs.unityproj
+Assembly-UnityScript-Editor-DesignManager.pidb
+Assembly-UnityScript-Editor-DesignManager.unityproj
+Assembly-UnityScript-Editor-vs.unityproj
+Assembly-UnityScript-Editor.pidb
+Assembly-UnityScript-Editor.unityproj
+Assembly-UnityScript-DesignManager-vs.unityproj
+Assembly-UnityScript-DesignManager.pidb
+Assembly-UnityScript-DesignManager.unityproj
+Assembly-UnityScript-vs.unityproj
+Assembly-UnityScript.pidb
+Assembly-UnityScript.unityProj
 
 # ============ #
 # OS generated #
