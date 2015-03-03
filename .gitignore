@@ -21,7 +21,7 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
-
+UpgradeLog.htm
 Assembly-CSharp-Editor-DesignManager-vs.csproj
 Assembly-CSharp-Editor-DesignManager.csproj
 Assembly-CSharp-Editor-DesignManager.pidb
