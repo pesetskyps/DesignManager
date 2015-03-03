@@ -66,7 +66,7 @@ public class BugButtonTransformer : MonoBehaviour
     public bool IsStarted
     {
         get { return _animator.GetBool("IsStarted"); }
-        set { _animator.SetBool("IsStarted", value); }
+        set { _animator.SetBool("IsStarted", value); _animator.SetBool("Disabled", value); }
     }
 
     public void ButtonPressed()
