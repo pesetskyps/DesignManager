@@ -9,10 +9,10 @@ public class BugPanel : MonoBehaviour {
     public Text CheapCostToFixText;
     public Image CheapCostToFixImage;
     public Button CheapCostToFixButton;
-    public Text CheapFixTime;
+    public Text CheapFixTimeMin;
     
     public Text EliteCostToFixText;
     public Image EliteCostToFixImage;
     public Button EliteCostToFixButton;
-	public Text EliteFixTime;
+	public Text EliteFixTimeMin;
 }

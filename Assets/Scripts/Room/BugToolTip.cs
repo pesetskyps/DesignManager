@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using System;
 
 public class BugToolTip : MonoBehaviour, IPointerEnterHandler
 {
@@ -19,7 +20,9 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     private Camera roomCamera;
     private MainCameraMove mainCameraMoveScript;
     RoomCustomization roomCustomizationScript;
-
+    public delegate void BugFoundEventHandler(Bug bug);
+    public static event BugFoundEventHandler onBugFound;
+    //EventHandler<BugEventArgs>
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -30,6 +33,9 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         {
             mainCameraMoveScript = mainCamera.GetComponent<MainCameraMove>();
         }
+
+
+        BugToolTip.onBugFound += AddBugToRoomFoundBugs;
     }
 
     private void CreateTooltip(PointerEventData data)
@@ -102,7 +108,9 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
                 if (gameManager.bugs.TryGetValue(bugType, out bug))
                 {
                     CreateTooltip(eventData);
-                    AddBugToRoomFoundBugs();
+                    
+                    if (onBugFound != null)
+                        onBugFound(bug);
                 }
             }
 
@@ -116,9 +124,11 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         }
     }
 
-    private void AddBugToRoomFoundBugs()
-    {
+    //public delegate void BugFoundEventHandler(Bug bug);
 
+
+    private void AddBugToRoomFoundBugs(Bug bug)
+    {
         var room = GameObject.FindGameObjectWithTag("Room");
         if (room != null)
         {
@@ -127,7 +137,8 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
 
         if (roomCustomizationScript != null)
         {
-            roomCustomizationScript.AddBugToFoundBugs(bug);
+            //roomCustomizationScript.AddBugToFoundBugs(bug);
+
         }
     }
 
@@ -137,4 +148,15 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         StartCoroutine(SetActivePanel(data));
 
     }
+}
+
+public class BugEventArgs : EventArgs
+{
+    public Bug bug{get; private set;}
+
+    public BugEventArgs(Bug bug)
+    {
+        this.bug = bug;
+    }
+
 }

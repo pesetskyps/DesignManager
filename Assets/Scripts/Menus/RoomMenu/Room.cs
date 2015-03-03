@@ -13,9 +13,9 @@ public class Bug
     public string Description { get; set; }
     public string Name { get; set; }
     public int CheapCostToFix { get; set; }
-    public int CheapTimeToFix { get; set; }
+    public int CheapTimeToFixMin { get; set; }
     public int EliteCostToFix { get; set; }
-    public int EliteTimeToFix { get; set; }
+    public int EliteTimeToFixMin { get; set; }
     public string CheapCostToFixImageResourcePath { get; set; }
     public string EliteCostToFixImageResourcePath { get; set; }
     public string ImageResourcePath { get; set; }
@@ -30,8 +30,8 @@ public class Bug
         CheapCostToFixImageResourcePath = cheapfixImagePath;
         EliteCostToFixImageResourcePath = eliteCostToFixImageResourcePath;
         ImageResourcePath = imageResoursePath;
-		CheapTimeToFix = cheapTimeToFix;
-		EliteTimeToFix = eliteTimeToFix;
+		CheapTimeToFixMin = cheapTimeToFix;
+		EliteTimeToFixMin = eliteTimeToFix;
     }
 }
 

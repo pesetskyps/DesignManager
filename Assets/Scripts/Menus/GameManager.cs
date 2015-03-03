@@ -21,18 +21,18 @@ public class GameManager : MonoBehaviour
             "Bugs/BadElectricity/CheapCostToFix",
             "Bugs/BadElectricity/EliteCostToFix",
             "Images/BadElectricity",
-		    120,
-		    60
+            120,
+            60
             ));
-        
-        bugs.Add(Bugs.Termites, new Bug("Termites", 
+
+        bugs.Add(Bugs.Termites, new Bug("Termites",
             Description = "Termites damage the wooden surfaces and can cause the wall holes.",
             1500, 2200,
             "Bugs/BadElectricity/CheapCostToFix",
             "Bugs/BadElectricity/EliteCostToFix",
             "Images/BadElectricity",
-	        3600,
-	        1200
+            3600,
+            1200
             ));
     }
 
@@ -58,4 +58,12 @@ public class GameManager : MonoBehaviour
     {
         MenuManager.Instance.HideMenu(menu);
     }
+
+
+
+}
+
+public class PlayerStats
+{
+    public Dictionary<string, Dictionary<Bug, float>> BugFixTime;
 }
