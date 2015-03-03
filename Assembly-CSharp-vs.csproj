@@ -48,13 +48,16 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
      <Compile Include="Assets\Scripts\ApplicationManager.cs" />
+     <Compile Include="Assets\Scripts\BugFix.cs" />
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\DragMe.cs" />
      <Compile Include="Assets\Scripts\DragPanel.cs" />
      <Compile Include="Assets\Scripts\DropMe.cs" />
+     <Compile Include="Assets\Scripts\Infrastructure\TimeSpanExtenstions.cs" />
      <Compile Include="Assets\Scripts\Levels\Rooms\RoomCustomization.cs" />
      <Compile Include="Assets\Scripts\LoadScene\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\MenuOpen.cs" />
+     <Compile Include="Assets\Scripts\Menus\BugButtonTransformer.cs" />
      <Compile Include="Assets\Scripts\Menus\BugMenu\BugMenuPopulator.cs" />
      <Compile Include="Assets\Scripts\Menus\BugMenu\BugPanel.cs" />
      <Compile Include="Assets\Scripts\Menus\Catalog\Category\CatalogCategoryListButton.cs" />
@@ -83,6 +86,8 @@
      <Compile Include="Assets\Scripts\TiltWindow.cs" />
      <Compile Include="Assets\Scripts\WorldCamera.cs" />
      <Compile Include="Assets\Scripts\test.cs" />
+     <Compile Include="Assets\Scripts\test\Move.cs" />
+     <Compile Include="Assets\Scripts\test\tposition.cs" />
      <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
      <None Include="Assets\Textures and Sprites\SF UI\Background\LICENSE.txt" />
      <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
