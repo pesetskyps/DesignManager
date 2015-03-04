@@ -244,11 +244,11 @@ RectTransform:
   - {fileID: 22411108}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: 1}
+  m_Pivot: {x: 0, y: 1}
 --- !u!224 &22411108
 RectTransform:
   m_ObjectHideFlags: 1
@@ -277,4 +277,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 111106}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

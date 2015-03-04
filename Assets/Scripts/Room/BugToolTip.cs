@@ -19,10 +19,10 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     private GameObject BugMenu;
     private Camera roomCamera;
     private MainCameraMove mainCameraMoveScript;
-    RoomCustomization roomCustomizationScript;
+    private RoomCustomization roomCustomizationScript;
     public delegate void BugFoundEventHandler(Bug bug);
     public static event BugFoundEventHandler onBugFound;
-    //EventHandler<BugEventArgs>
+
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -124,9 +124,6 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         }
     }
 
-    //public delegate void BugFoundEventHandler(Bug bug);
-
-
     private void AddBugToRoomFoundBugs(Bug bug)
     {
         var room = GameObject.FindGameObjectWithTag("Room");
@@ -146,17 +143,5 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     {
         // StartCoroutine is used to give time to the user to hover over the tooltip itself. 
         StartCoroutine(SetActivePanel(data));
-
     }
-}
-
-public class BugEventArgs : EventArgs
-{
-    public Bug bug{get; private set;}
-
-    public BugEventArgs(Bug bug)
-    {
-        this.bug = bug;
-    }
-
 }

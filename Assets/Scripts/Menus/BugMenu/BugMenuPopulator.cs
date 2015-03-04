@@ -11,7 +11,7 @@ public class BugMenuPopulator : MonoBehaviour
     private GameObject newButton;
     private RoomCustomization roomCustomizationScript;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         BugToolTip.onBugFound += this.PopulateBugMenu;
         RoomCustomization.onRoomLoaded += this.CleanBugMenu;
@@ -53,12 +53,10 @@ public class BugMenuPopulator : MonoBehaviour
             {
                 buttonTransformer.Bug = bug;
             }
-
         }
-
     }
 
-    void StartBugFix(string roomName, FixType fixType, int timeToFix, Bug bug)
+    void StartBugFix(string roomName, FixType fixType, float timeToFix, Bug bug)
     {
         var startTime = DateTime.Now;
         var duration = TimeSpan.FromMinutes(timeToFix);
@@ -71,7 +69,7 @@ public class BugMenuPopulator : MonoBehaviour
         }
     }
 
-    string ConvertTimeToString(int minutes)
+    string ConvertTimeToString(float minutes)
     {
         TimeSpan span = TimeSpan.FromMinutes(minutes);
         return span.ToReadableString();

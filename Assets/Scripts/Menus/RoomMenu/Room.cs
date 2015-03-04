@@ -13,15 +13,15 @@ public class Bug
     public string Description { get; set; }
     public string Name { get; set; }
     public int CheapCostToFix { get; set; }
-    public int CheapTimeToFixMin { get; set; }
+    public float CheapTimeToFixMin { get; set; }
     public int EliteCostToFix { get; set; }
-    public int EliteTimeToFixMin { get; set; }
+    public float EliteTimeToFixMin { get; set; }
     public string CheapCostToFixImageResourcePath { get; set; }
     public string EliteCostToFixImageResourcePath { get; set; }
     public string ImageResourcePath { get; set; }
 
     public Bug(string Name, string desc, int cheapCostTofix, int eliteCostToFix, string cheapfixImagePath,
-        string eliteCostToFixImageResourcePath, string imageResoursePath, int cheapTimeToFix, int eliteTimeToFix)
+        string eliteCostToFixImageResourcePath, string imageResoursePath, float cheapTimeToFix, float eliteTimeToFix)
     {
         Description = desc;
         this.Name = Name;

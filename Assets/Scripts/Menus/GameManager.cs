@@ -16,21 +16,22 @@ public class GameManager : MonoBehaviour
 
     private void InitBugs()
     {
-        var Description = "Electricity Bugs may lead to the fire.\nSuch a bugs can low down the cost of the house.";
-        bugs.Add(Bugs.BadElectricity, new Bug("Bad Electricity", Description, 1200, 3200,
+        bugs.Add(Bugs.BadElectricity,
+            new Bug("Bad Electricity", 
+            "Electricity Bugs may lead to the fire.\nSuch a bugs can low down the cost of the house.", 1200, 3200,
             "Bugs/BadElectricity/CheapCostToFix",
             "Bugs/BadElectricity/EliteCostToFix",
             "Images/BadElectricity",
-            120,
+            0.5f,
             60
             ));
 
         bugs.Add(Bugs.Termites, new Bug("Termites",
-            Description = "Termites damage the wooden surfaces and can cause the wall holes.",
+            "Termites damage the wooden surfaces and can cause the wall holes.",
             1500, 2200,
-            "Bugs/BadElectricity/CheapCostToFix",
-            "Bugs/BadElectricity/EliteCostToFix",
-            "Images/BadElectricity",
+            "Bugs/Termites/CheapCostToFix",
+            "Bugs/Termites/EliteCostToFix",
+            "Images/Termites",
             3600,
             1200
             ));
