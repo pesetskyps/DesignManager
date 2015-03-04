@@ -52,7 +52,7 @@ public class MainCameraMove : MonoBehaviour
         transform.LookAt(orbitVector.transform.position, Vector3.up);
 
         // Hide the capsule (disable the mesh renderer)
-        orbitVector.renderer.enabled = false;
+        orbitVector.GetComponent<Renderer>().enabled = false;
 
         // Create material to apply for selections (or use material supplied by user)
         if (optionalMaterialForSelection)
@@ -146,7 +146,7 @@ public class MainCameraMove : MonoBehaviour
             else if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hitInfo = new RaycastHit();
-                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+                Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 bool allowMultiSelect = false;
 
                 // See if the user is holding in CTRL or SHIFT. If so, enable multiselection
@@ -156,7 +156,7 @@ public class MainCameraMove : MonoBehaviour
                 }
 
                 // Something was clicked. Fetch.
-                if (Physics.Raycast(ray, out hitInfo, camera.farClipPlane))
+                if (Physics.Raycast(ray, out hitInfo, GetComponent<Camera>().farClipPlane))
                 {
                     var target = hitInfo.transform;
 
@@ -167,14 +167,14 @@ public class MainCameraMove : MonoBehaviour
                     }
 
                     //if renderer attached
-                    if (target.renderer != null)
+                    if (target.GetComponent<Renderer>() != null)
                     {
                         //Toggle between selected and unselected (depending on current state)
-                        if (target.renderer.sharedMaterial != materialForSelection)
+                        if (target.GetComponent<Renderer>().sharedMaterial != materialForSelection)
                         {
                             selectedObjects.Add(target.gameObject);
-                            selectedObjectsMaterial.Add(target.gameObject.renderer.sharedMaterial);
-                            target.gameObject.renderer.sharedMaterial = materialForSelection;
+                            selectedObjectsMaterial.Add(target.gameObject.GetComponent<Renderer>().sharedMaterial);
+                            target.gameObject.GetComponent<Renderer>().sharedMaterial = materialForSelection;
 
                         }
                         else
@@ -182,7 +182,7 @@ public class MainCameraMove : MonoBehaviour
                             int arrayLocation = selectedObjects.IndexOf(target.gameObject);
                             if (arrayLocation == -1) { return; }; //this shouldn't happen. Ever. But still.
 
-                            target.gameObject.renderer.sharedMaterial = (Material)selectedObjectsMaterial[arrayLocation];
+                            target.gameObject.GetComponent<Renderer>().sharedMaterial = (Material)selectedObjectsMaterial[arrayLocation];
                             selectedObjects.RemoveAt(arrayLocation);
                             selectedObjectsMaterial.RemoveAt(arrayLocation);
 
@@ -253,7 +253,7 @@ public class MainCameraMove : MonoBehaviour
             if (currentItem != null)
             {
                 GameObject selectedObject = (GameObject)selectedObjects[currentItem];
-                selectedObject.renderer.sharedMaterial = (Material)selectedObjectsMaterial[currentItem];
+                selectedObject.GetComponent<Renderer>().sharedMaterial = (Material)selectedObjectsMaterial[currentItem];
             }
         }
 
