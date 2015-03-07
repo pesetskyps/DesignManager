@@ -34,10 +34,13 @@ public class BugMenuPopulator : MonoBehaviour
             sampleobj.CheapCostToFixImage.sprite = Resources.Load<Sprite>(bug.CheapCostToFixImageResourcePath);
             sampleobj.CheapFixTimeMin.text = ConvertTimeToString(bug.CheapTimeToFixMin);
             sampleobj.CheapCostToFixButton.onClick.AddListener(() => StartBugFix(room.name, FixType.Cheap, bug.CheapTimeToFixMin, bug));
+            sampleobj.CheapButtonTransformer.Bug = bug;
+
             sampleobj.EliteCostToFixText.text = bug.EliteCostToFix.ToString();
             sampleobj.EliteCostToFixImage.sprite = Resources.Load<Sprite>(bug.EliteCostToFixImageResourcePath);
             sampleobj.EliteFixTimeMin.text = ConvertTimeToString(bug.EliteTimeToFixMin);
             sampleobj.EliteCostToFixButton.onClick.AddListener(() => StartBugFix(room.name, FixType.Cheap, bug.EliteTimeToFixMin, bug));
+            sampleobj.EliteButtonTransformer.Bug = bug;
 
             newButton.transform.SetParent(contentPanel, false);
             contentPanel.transform.SetAsLastSibling();

@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 
+[RequireComponent(typeof(BugRemainedTime))]
 public class BugButtonTransformer : MonoBehaviour
 {
     public Bug Bug;
-    public Text remainedTimeLabel;
+
     //for cheap fix button script attached it will be elite fix button
     public Button otherTypeFixButton;
 
@@ -19,6 +20,7 @@ public class BugButtonTransformer : MonoBehaviour
     private GameObject room;
     private RoomCustomization roomCustomizationScript;
     private List<BugFix> startedBugFixes = new List<BugFix>();
+    private BugRemainedTime remainTime;
 
     public delegate void BugFixCanceledEventHandler(Bug bug);
     public static event BugFixCanceledEventHandler onBugCanceled;
@@ -36,6 +38,11 @@ public class BugButtonTransformer : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        remainTime = GetComponent<BugRemainedTime>();
+    }
+
     public void Update()
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("FixIsStarted"))
@@ -44,19 +51,29 @@ public class BugButtonTransformer : MonoBehaviour
             {
                 startedBugFixes = roomCustomizationScript.StartedBugFixes;
             }
+
             if (startedBugFixes != null)
             {
                 foreach (var bugFix in startedBugFixes)
                 {
-                    var now = DateTime.Now;
-                    var remainedTime = bugFix.EndTime - now;
-                    if (remainedTime.TotalSeconds > 0)
+                    if (Bug.Type == bugFix.Bug.Type)
                     {
-                        remainedTimeLabel.text = remainedTime.ToReadableString();
-                    }
-                    else
-                    {
-                        remainedTimeLabel.text = new TimeSpan(0, 0, 0).ToReadableString();
+                        var now = DateTime.Now;
+                        var remainedTime = bugFix.EndTime - now;
+                        if (remainedTime.TotalSeconds > 0)
+                        {
+                            if (remainTime != null)
+                            {
+                                remainTime.remainedTimeLabel.text = remainedTime.ToReadableString();
+                            }
+                        }
+                        else
+                        {
+                            if (remainTime != null)
+                            {
+                                remainTime.remainedTimeLabel.text = new TimeSpan(0, 0, 0).ToReadableString();
+                            }
+                        }
                     }
                 }
             }
@@ -91,7 +108,8 @@ public class BugButtonTransformer : MonoBehaviour
         {
             _button.interactable = true;
         }
-        if (otherTypeFixButton != null) {
+        if (otherTypeFixButton != null)
+        {
             otherTypeFixButton.interactable = true;
         }
         IsStarted = false;

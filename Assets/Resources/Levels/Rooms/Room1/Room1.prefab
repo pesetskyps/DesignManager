@@ -112,6 +112,7 @@ GameObject:
   - 4: {fileID: 453042}
   - 114: {fileID: 11453038}
   - 65: {fileID: 6553038}
+  - 114: {fileID: 11433956}
   m_Layer: 0
   m_Name: Termites
   m_TagString: Bug
@@ -129,6 +130,7 @@ GameObject:
   - 4: {fileID: 453044}
   - 114: {fileID: 11453040}
   - 65: {fileID: 6553040}
+  - 114: {fileID: 11446964}
   m_Layer: 0
   m_Name: BadElectricity
   m_TagString: Bug
@@ -287,6 +289,7 @@ GameObject:
   - 4: {fileID: 497818}
   - 114: {fileID: 11497820}
   - 65: {fileID: 6597820}
+  - 114: {fileID: 11499370}
   m_Layer: 0
   m_Name: Termites
   m_TagString: Bug
@@ -565,7 +568,7 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
 --- !u!23 &2301788
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -573,19 +576,23 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 59632b42aa4e9584c84c9374722f5768, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!23 &2301790
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -593,19 +600,23 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 59632b42aa4e9584c84c9374722f5768, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!23 &2377518
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -613,19 +624,23 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!23 &2377520
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -633,19 +648,23 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!23 &2377522
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -653,19 +672,23 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 59632b42aa4e9584c84c9374722f5768, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!23 &2377524
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -673,19 +696,23 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!23 &2377526
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -693,19 +720,23 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!23 &2377528
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -713,15 +744,19 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 630c72a33f011fa44becabe398515c8d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!33 &3301788
@@ -790,7 +825,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6501788
@@ -965,6 +999,30 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11433956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc437252a955b94db23ee70130b2aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+--- !u!114 &11446964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc437252a955b94db23ee70130b2aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
 --- !u!114 &11453038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1004,6 +1062,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 127820, guid: 86c01a1775e710540a3da01716c0e5d1, type: 2}
   bugType: 1
+--- !u!114 &11499370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc437252a955b94db23ee70130b2aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
 --- !u!198 &19853038
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1259,6 +1329,7 @@ ParticleSystem:
     boxX: 1
     boxY: 1
     boxZ: 1
+    arc: 360
     placementMode: 0
     m_Mesh: {fileID: 0}
     randomDirection: 0
@@ -2311,6 +2382,7 @@ ParticleSystem:
     boxX: 1
     boxY: 1
     boxZ: 1
+    arc: 360
     placementMode: 0
     m_Mesh: {fileID: 0}
     randomDirection: 0
@@ -3363,6 +3435,7 @@ ParticleSystem:
     boxX: 1
     boxY: 1
     boxZ: 1
+    arc: 360
     placementMode: 0
     m_Mesh: {fileID: 0}
     randomDirection: 0
@@ -4169,15 +4242,19 @@ ParticleSystemRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -4201,15 +4278,19 @@ ParticleSystemRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -4233,15 +4314,19 @@ ParticleSystemRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_RenderMode: 0
@@ -4301,4 +4386,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177528}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

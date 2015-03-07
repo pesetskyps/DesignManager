@@ -228,6 +228,7 @@ GameObject:
   - 95: {fileID: 9547924}
   - 114: {fileID: 11414240}
   - 114: {fileID: 11477586}
+  - 114: {fileID: 11488462}
   m_Layer: 5
   m_Name: CheapFixButton
   m_TagString: Untagged
@@ -334,6 +335,7 @@ GameObject:
   - 95: {fileID: 9530714}
   - 114: {fileID: 11430714}
   - 114: {fileID: 11477584}
+  - 114: {fileID: 11435774}
   m_Layer: 5
   m_Name: EliteFixButton
   m_TagString: Untagged
@@ -838,7 +840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27271d0cf1c98b48849583044c4c7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainedTimeLabel: {fileID: 11430722}
   otherTypeFixButton: {fileID: 11423226}
 --- !u!114 &11423202
 MonoBehaviour:
@@ -1275,7 +1276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27271d0cf1c98b48849583044c4c7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainedTimeLabel: {fileID: 11411896}
   otherTypeFixButton: {fileID: 11423212}
 --- !u!114 &11430716
 MonoBehaviour:
@@ -1403,6 +1403,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 1100
+--- !u!114 &11435774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2651ab905f5866d41abdd4f0ddfe6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainedTimeLabel: {fileID: 11411896}
 --- !u!114 &11439422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1798,6 +1810,18 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+--- !u!114 &11488462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2651ab905f5866d41abdd4f0ddfe6b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainedTimeLabel: {fileID: 11430722}
 --- !u!114 &11492848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1833,10 +1857,12 @@ MonoBehaviour:
   CheapCostToFixImage: {fileID: 11423216}
   CheapCostToFixButton: {fileID: 11423212}
   CheapFixTimeMin: {fileID: 11453880}
+  CheapButtonTransformer: {fileID: 11414240}
   EliteCostToFixText: {fileID: 11423218}
   EliteCostToFixImage: {fileID: 11423222}
   EliteCostToFixButton: {fileID: 11423226}
   EliteFixTimeMin: {fileID: 11411910}
+  EliteButtonTransformer: {fileID: 11430714}
 --- !u!222 &22211912
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -2044,7 +2070,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &22411910
 RectTransform:
@@ -2061,7 +2087,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &22411912
 RectTransform:
@@ -2094,10 +2120,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22411912}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 165.850006, y: -20}
-  m_SizeDelta: {x: 123.900002, y: 40}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22411922
 RectTransform:
@@ -2114,7 +2140,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &22411924
 RectTransform:
@@ -2277,10 +2303,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22411924}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 163.555008, y: -20}
-  m_SizeDelta: {x: 122.370003, y: 40}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22423226
 RectTransform:
@@ -2510,10 +2536,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22411906}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161.537506, y: -20}
-  m_SizeDelta: {x: 121.025002, y: 40}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22453874
 RectTransform:
@@ -2546,10 +2572,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22453874}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 165.850006, y: -20}
-  m_SizeDelta: {x: 123.900002, y: 40}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22453878
 RectTransform:
@@ -2566,7 +2592,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!225 &22530714
 CanvasGroup:

@@ -11,6 +11,7 @@ public enum Bugs
 public class Bug
 {
     public string Description { get; set; }
+    public Bugs Type { get; set; }
     public string Name { get; set; }
     public int CheapCostToFix { get; set; }
     public float CheapTimeToFixMin { get; set; }
@@ -20,11 +21,12 @@ public class Bug
     public string EliteCostToFixImageResourcePath { get; set; }
     public string ImageResourcePath { get; set; }
 
-    public Bug(string Name, string desc, int cheapCostTofix, int eliteCostToFix, string cheapfixImagePath,
+    public Bug(string Name, Bugs type,  string desc, int cheapCostTofix, int eliteCostToFix, string cheapfixImagePath,
         string eliteCostToFixImageResourcePath, string imageResoursePath, float cheapTimeToFix, float eliteTimeToFix)
     {
-        Description = desc;
         this.Name = Name;
+        this.Type = type;
+        Description = desc;
         CheapCostToFix = cheapCostTofix;
         EliteCostToFix = eliteCostToFix;
         CheapCostToFixImageResourcePath = cheapfixImagePath;

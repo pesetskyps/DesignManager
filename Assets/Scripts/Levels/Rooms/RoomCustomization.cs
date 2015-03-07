@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class RoomCustomization : MonoBehaviour
 {
     public string roomName;
@@ -18,6 +19,9 @@ public class RoomCustomization : MonoBehaviour
 
     public delegate void RoomLoadedEventHandler();
     public static event RoomLoadedEventHandler onRoomLoaded;
+
+    public delegate void BugFixStartedEventHandler(BugFix bugfix);
+    public static event BugFixStartedEventHandler onBugFixStarted;
 
     void Start()
     {
@@ -45,8 +49,8 @@ public class RoomCustomization : MonoBehaviour
     public void AddBugToStartedBugFixes(BugFix bugfix)
     {
         StartedBugFixes.Add(bugfix);
-        //if (onBugFound != null)
-        //    onBugFound();
+        if (onBugFixStarted != null)
+            onBugFixStarted(bugfix);
     }
 
     public void RemoveBugFromStartedBugFixes(Bug bug)

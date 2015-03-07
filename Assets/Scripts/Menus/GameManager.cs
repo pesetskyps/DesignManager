@@ -17,22 +17,22 @@ public class GameManager : MonoBehaviour
     private void InitBugs()
     {
         bugs.Add(Bugs.BadElectricity,
-            new Bug("Bad Electricity", 
+            new Bug("Bad Electricity", Bugs.BadElectricity,
             "Electricity Bugs may lead to the fire.\nSuch a bugs can low down the cost of the house.", 1200, 3200,
             "Bugs/BadElectricity/CheapCostToFix",
             "Bugs/BadElectricity/EliteCostToFix",
             "Images/BadElectricity",
-            0.5f,
+            0.1f,
             60
             ));
 
-        bugs.Add(Bugs.Termites, new Bug("Termites",
+        bugs.Add(Bugs.Termites, new Bug("Termites", Bugs.Termites,
             "Termites damage the wooden surfaces and can cause the wall holes.",
             1500, 2200,
             "Bugs/Termites/CheapCostToFix",
             "Bugs/Termites/EliteCostToFix",
             "Images/Termites",
-            3600,
+            0.15f,
             1200
             ));
     }
@@ -59,9 +59,6 @@ public class GameManager : MonoBehaviour
     {
         MenuManager.Instance.HideMenu(menu);
     }
-
-
-
 }
 
 public class PlayerStats
