@@ -14,14 +14,14 @@ public class RoomCustomization : MonoBehaviour
     public Features[] roomFeatures;
 
     public List<Bug> FoundBugs = new List<Bug>();
-    public List<BugFix> StartedBugFixes = new List<BugFix>();
-
 
     public delegate void RoomLoadedEventHandler();
     public static event RoomLoadedEventHandler onRoomLoaded;
 
-    public delegate void BugFixStartedEventHandler(BugFix bugfix);
-    public static event BugFixStartedEventHandler onBugFixStarted;
+    void OnEnable()
+    {
+        BugToolTip.onBugFound += AddBugToFoundBugs;
+    }
 
     void Start()
     {
@@ -35,30 +35,16 @@ public class RoomCustomization : MonoBehaviour
 
         if (onRoomLoaded != null)
             onRoomLoaded();
+    }
 
-        BugToolTip.onBugFound += AddBugToFoundBugs;
-        BugButtonTransformer.onBugCanceled += RemoveBugFromStartedBugFixes;
+    void OnDisable()
+    {
+        BugToolTip.onBugFound -= AddBugToFoundBugs;
     }
 
     public void AddBugToFoundBugs(Bug bug)
     {
         FoundBugs.Add(bug);
-
     }
 
-    public void AddBugToStartedBugFixes(BugFix bugfix)
-    {
-        StartedBugFixes.Add(bugfix);
-        if (onBugFixStarted != null)
-            onBugFixStarted(bugfix);
-    }
-
-    public void RemoveBugFromStartedBugFixes(Bug bug)
-    {
-        var startedBugFix = StartedBugFixes.Find(b => b.Bug.Name == bug.Name);
-        if (startedBugFix != null)
-        {
-            StartedBugFixes.Remove(startedBugFix);
-        }
-    }
 }

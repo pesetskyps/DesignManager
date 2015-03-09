@@ -1,51 +1,82 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
-[RequireComponent(typeof(BugToolTip))]
 public class BugFixer : MonoBehaviour
 {
 
-    public delegate void BugFixedEventHandler();
+    public delegate void BugFixedEventHandler(GameObject bugGObj, BugFix bugFix);
     public static event BugFixedEventHandler onBugFixed;
 
-    private BugFix bugFix;
-    public string Name;
+    public delegate void BugFixStartedEventHandler(BugFix bugfix);
+    public static event BugFixStartedEventHandler onBugFixStarted;
 
+    public List<BugFix> StartedBugFixes = new List<BugFix>();
+    public List<BugFix> FinishedBugFixes = new List<BugFix>();
 
     private BugToolTip bugToolTip;
     // Use this for initialization
     void OnEnable()
     {
-        RoomCustomization.onBugFixStarted += this.StartBugFix;
         bugToolTip = GetComponent<BugToolTip>();
+        BugButtonTransformer.onBugCanceled += RemoveBugFromStartedBugFixes;
+        onBugFixed += FinishBugFix;
     }
 
     void OnDisable()
     {
-        RoomCustomization.onBugFixStarted -= this.StartBugFix;
+        BugButtonTransformer.onBugCanceled -= RemoveBugFromStartedBugFixes;
+        onBugFixed -= FinishBugFix;
     }
 
     void Update()
     {
-        if (bugFix != null)
+        if (StartedBugFixes.Count != 0)
         {
-            if (bugFix.Bug.Type == bugToolTip.bugType)
+            foreach (var bugFix in StartedBugFixes)
             {
                 if (IsBugFixed(bugFix))
                 {
-                    gameObject.SetActive(false);
+                    var FoundBugs = GameObject.FindGameObjectsWithTag("Bug");
+                    if (FoundBugs != null)
+                    {
+                        foreach (var bug in FoundBugs)
+                        {
+                            bugToolTip = bug.GetComponent<BugToolTip>();
+                            if (bugToolTip != null)
+                            {
+                                if (bugFix.Bug.Type == bugToolTip.bugType)
+                                {
+                                    if (onBugFixed != null)
+                                        onBugFixed(bug, bugFix);
+                                }
+                            }
+                        }
+                    }
                 }
             }
+
         }
     }
 
-    public void StartBugFix(BugFix bugFix)
+
+    public void StartBugFix(string roomName, FixType fixType, float timeToFix, Bug bug)
     {
-        if (bugFix.Bug.Type == bugToolTip.bugType)
-        {
-            this.bugFix = bugFix;
-            Name = bugFix.Bug.Name;
-        }
+        var startTime = DateTime.Now;
+        var duration = TimeSpan.FromMinutes(timeToFix);
+        var endTime = startTime + duration;
+        BugFix bugFix = new BugFix(roomName, startTime, duration, endTime, fixType, bug);
+
+        StartedBugFixes.Add(bugFix);
+        if (onBugFixStarted != null)
+            onBugFixStarted(bugFix);
+    }
+
+    public void FinishBugFix(GameObject bug, BugFix bugFix)
+    {
+        bug.SetActive(false);
+        FinishedBugFixes.Add(bugFix);
     }
 
     private bool IsBugFixed(BugFix bugFix)
@@ -53,5 +84,14 @@ public class BugFixer : MonoBehaviour
         var now = System.DateTime.Now;
         var remainedTime = bugFix.EndTime - now;
         return remainedTime.TotalSeconds < 0;
+    }
+
+    public void RemoveBugFromStartedBugFixes(Bug bug)
+    {
+        var startedBugFix = StartedBugFixes.Find(b => b.Bug.Name == bug.Name);
+        if (startedBugFix != null)
+        {
+            StartedBugFixes.Remove(startedBugFix);
+        }
     }
 }

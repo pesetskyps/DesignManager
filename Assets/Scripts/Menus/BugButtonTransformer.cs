@@ -18,7 +18,7 @@ public class BugButtonTransformer : MonoBehaviour
     private Animator otherTypeFixButtonAnimator;
 
     private GameObject room;
-    private RoomCustomization roomCustomizationScript;
+    private BugFixer roomBugFixerScript;
     private List<BugFix> startedBugFixes = new List<BugFix>();
     private BugRemainedTime remainTime;
 
@@ -32,24 +32,32 @@ public class BugButtonTransformer : MonoBehaviour
         _button = GetComponent<Button>();
 
         room = GameObject.FindGameObjectWithTag("Room");
+        remainTime = GetComponent<BugRemainedTime>();
         if (room != null)
         {
-            roomCustomizationScript = room.GetComponent<RoomCustomization>();
+            roomBugFixerScript = room.GetComponent<BugFixer>();
         }
     }
 
     void OnEnable()
     {
-        remainTime = GetComponent<BugRemainedTime>();
+        BugFixer.onBugFixed += SetIsFinished;
+
+    }
+
+    void OnDisable()
+    {
+        BugFixer.onBugFixed -= SetIsFinished;
+
     }
 
     public void Update()
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("FixIsStarted"))
         {
-            if (roomCustomizationScript != null)
+            if (roomBugFixerScript != null)
             {
-                startedBugFixes = roomCustomizationScript.StartedBugFixes;
+                startedBugFixes = roomBugFixerScript.StartedBugFixes;
             }
 
             if (startedBugFixes != null)
@@ -83,7 +91,20 @@ public class BugButtonTransformer : MonoBehaviour
     public bool IsStarted
     {
         get { return _animator.GetBool("IsStarted"); }
-        set { _animator.SetBool("IsStarted", value); _animator.SetBool("Disabled", value); }
+        set { _animator.SetBool("IsStarted", value); }
+        //_animator.SetBool("Disabled", value);
+    }
+
+    public bool IsFinished
+    {
+        get { return _animator.GetBool("IsFinished"); }
+        set { _animator.SetBool("IsFinished", value);}
+    }
+
+    public void SetIsFinished(GameObject go, BugFix bugFix)
+    {
+        IsFinished = true;
+        IsStarted = false;
     }
 
     public void ButtonPressed()

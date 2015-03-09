@@ -10,6 +10,7 @@ public class BugMenuPopulator : MonoBehaviour
 
     private GameObject newButton;
     private RoomCustomization roomCustomizationScript;
+    private BugFixer roomBugFixerScript;
     // Use this for initialization
     void Awake()
     {
@@ -24,53 +25,44 @@ public class BugMenuPopulator : MonoBehaviour
         if (room != null)
         {
             roomCustomizationScript = room.GetComponent<RoomCustomization>();
-
-            newButton = Instantiate(prefab) as GameObject;
-            BugPanel sampleobj = newButton.GetComponent<BugPanel>();
-
-            sampleobj.Description.text = bug.Description;
-            sampleobj.Name.text = bug.Name;
-            sampleobj.CheapCostToFixText.text = bug.CheapCostToFix.ToString();
-            sampleobj.CheapCostToFixImage.sprite = Resources.Load<Sprite>(bug.CheapCostToFixImageResourcePath);
-            sampleobj.CheapFixTimeMin.text = ConvertTimeToString(bug.CheapTimeToFixMin);
-            sampleobj.CheapCostToFixButton.onClick.AddListener(() => StartBugFix(room.name, FixType.Cheap, bug.CheapTimeToFixMin, bug));
-            sampleobj.CheapButtonTransformer.Bug = bug;
-
-            sampleobj.EliteCostToFixText.text = bug.EliteCostToFix.ToString();
-            sampleobj.EliteCostToFixImage.sprite = Resources.Load<Sprite>(bug.EliteCostToFixImageResourcePath);
-            sampleobj.EliteFixTimeMin.text = ConvertTimeToString(bug.EliteTimeToFixMin);
-            sampleobj.EliteCostToFixButton.onClick.AddListener(() => StartBugFix(room.name, FixType.Cheap, bug.EliteTimeToFixMin, bug));
-            sampleobj.EliteButtonTransformer.Bug = bug;
-
-            newButton.transform.SetParent(contentPanel, false);
-            contentPanel.transform.SetAsLastSibling();
-
-            var buttonTransformer = sampleobj.CheapCostToFixButton.GetComponent<BugButtonTransformer>();
-            if (buttonTransformer != null)
+            roomBugFixerScript = room.GetComponent<BugFixer>();
+            if (roomBugFixerScript != null)
             {
-                buttonTransformer.Bug = bug;
-            }
+                newButton = Instantiate(prefab) as GameObject;
+                BugPanel sampleobj = newButton.GetComponent<BugPanel>();
 
-            buttonTransformer = sampleobj.EliteCostToFixButton.GetComponent<BugButtonTransformer>();
-            if (buttonTransformer != null)
-            {
-                buttonTransformer.Bug = bug;
+                sampleobj.Description.text = bug.Description;
+                sampleobj.Name.text = bug.Name;
+                sampleobj.CheapCostToFixText.text = bug.CheapCostToFix.ToString();
+                sampleobj.CheapCostToFixImage.sprite = Resources.Load<Sprite>(bug.CheapCostToFixImageResourcePath);
+                sampleobj.CheapFixTimeMin.text = ConvertTimeToString(bug.CheapTimeToFixMin);
+                sampleobj.CheapCostToFixButton.onClick.AddListener(() => roomBugFixerScript.StartBugFix(room.name, FixType.Cheap, bug.CheapTimeToFixMin, bug));
+                sampleobj.CheapButtonTransformer.Bug = bug;
+
+                sampleobj.EliteCostToFixText.text = bug.EliteCostToFix.ToString();
+                sampleobj.EliteCostToFixImage.sprite = Resources.Load<Sprite>(bug.EliteCostToFixImageResourcePath);
+                sampleobj.EliteFixTimeMin.text = ConvertTimeToString(bug.EliteTimeToFixMin);
+                sampleobj.EliteCostToFixButton.onClick.AddListener(() => roomBugFixerScript.StartBugFix(room.name, FixType.Cheap, bug.EliteTimeToFixMin, bug));
+                sampleobj.EliteButtonTransformer.Bug = bug;
+
+                newButton.transform.SetParent(contentPanel, false);
+                contentPanel.transform.SetAsLastSibling();
+
+                var buttonTransformer = sampleobj.CheapCostToFixButton.GetComponent<BugButtonTransformer>();
+                if (buttonTransformer != null)
+                {
+                    buttonTransformer.Bug = bug;
+                }
+
+                buttonTransformer = sampleobj.EliteCostToFixButton.GetComponent<BugButtonTransformer>();
+                if (buttonTransformer != null)
+                {
+                    buttonTransformer.Bug = bug;
+                }
             }
         }
     }
 
-    void StartBugFix(string roomName, FixType fixType, float timeToFix, Bug bug)
-    {
-        var startTime = DateTime.Now;
-        var duration = TimeSpan.FromMinutes(timeToFix);
-        var endTime = startTime + duration;
-        BugFix bugFix = new BugFix(roomName, startTime, duration, endTime, fixType, bug);
-
-        if (roomCustomizationScript != null)
-        {
-            roomCustomizationScript.AddBugToStartedBugFixes(bugFix);
-        }
-    }
 
     string ConvertTimeToString(float minutes)
     {
