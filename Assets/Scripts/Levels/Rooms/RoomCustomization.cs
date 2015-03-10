@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
+[RequireComponent(typeof(BugFixer))]
 public class RoomCustomization : MonoBehaviour
 {
     public string roomName;
@@ -13,16 +13,20 @@ public class RoomCustomization : MonoBehaviour
     [HideInInspector]
     public Features[] roomFeatures;
 
-    public List<Bug> FoundBugs = new List<Bug>();
-
     public delegate void RoomLoadedEventHandler();
     public static event RoomLoadedEventHandler onRoomLoaded;
 
     void OnEnable()
     {
-        BugToolTip.onBugFound += AddBugToFoundBugs;
+
+        GameManager.Instance.Load();
     }
 
+    void OnDisable()
+    {
+        BugFixer fixer = GetComponent<BugFixer>();
+        GameManager.Instance.Save(fixer.FinishedBugFixes, fixer.StartedBugFixes, fixer.bbb);
+    }
     void Start()
     {
         var gmRoom = GameManager.Instance.rooms.Find(r => r.roomName == roomName);
@@ -36,15 +40,4 @@ public class RoomCustomization : MonoBehaviour
         if (onRoomLoaded != null)
             onRoomLoaded();
     }
-
-    void OnDisable()
-    {
-        BugToolTip.onBugFound -= AddBugToFoundBugs;
-    }
-
-    public void AddBugToFoundBugs(Bug bug)
-    {
-        FoundBugs.Add(bug);
-    }
-
 }

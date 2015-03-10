@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+[RequireComponent(typeof(RoomCustomization))]
 public class BugFixer : MonoBehaviour
 {
 
@@ -14,7 +15,8 @@ public class BugFixer : MonoBehaviour
 
     public List<BugFix> StartedBugFixes = new List<BugFix>();
     public List<BugFix> FinishedBugFixes = new List<BugFix>();
-
+    //public List<Bug> BugsFound = new List<Bug>();
+    public List<Bug> bbb = new List<Bug>();
     private BugToolTip bugToolTip;
     // Use this for initialization
     void OnEnable()
@@ -22,12 +24,14 @@ public class BugFixer : MonoBehaviour
         bugToolTip = GetComponent<BugToolTip>();
         BugButtonTransformer.onBugCanceled += RemoveBugFromStartedBugFixes;
         onBugFixed += FinishBugFix;
+        BugToolTip.onBugFound += AddBugToFoundBugs;
     }
 
     void OnDisable()
     {
         BugButtonTransformer.onBugCanceled -= RemoveBugFromStartedBugFixes;
         onBugFixed -= FinishBugFix;
+        BugToolTip.onBugFound -= AddBugToFoundBugs;
     }
 
     void Update()
@@ -63,10 +67,9 @@ public class BugFixer : MonoBehaviour
 
     public void StartBugFix(string roomName, FixType fixType, float timeToFix, Bug bug)
     {
-        var startTime = DateTime.Now;
-        var duration = TimeSpan.FromMinutes(timeToFix);
-        var endTime = startTime + duration;
-        BugFix bugFix = new BugFix(roomName, startTime, duration, endTime, fixType, bug);
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.Add(TimeSpan.FromMinutes(timeToFix));
+        BugFix bugFix = new BugFix(roomName, startTime.ToOADate(), timeToFix, endTime.ToOADate(), fixType, bug);
 
         StartedBugFixes.Add(bugFix);
         if (onBugFixStarted != null)
@@ -82,7 +85,7 @@ public class BugFixer : MonoBehaviour
     private bool IsBugFixed(BugFix bugFix)
     {
         var now = System.DateTime.Now;
-        var remainedTime = bugFix.EndTime - now;
+        var remainedTime = DateTime.FromOADate(bugFix.EndTime) - now;
         return remainedTime.TotalSeconds < 0;
     }
 
@@ -93,5 +96,11 @@ public class BugFixer : MonoBehaviour
         {
             StartedBugFixes.Remove(startedBugFix);
         }
+    }
+
+    public void AddBugToFoundBugs(Bug bug)
+    {
+        Debug.Log(FinishedBugFixes);
+        bbb.Add(bug);
     }
 }

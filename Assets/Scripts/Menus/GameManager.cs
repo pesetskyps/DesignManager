@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -59,9 +61,53 @@ public class GameManager : MonoBehaviour
     {
         MenuManager.Instance.HideMenu(menu);
     }
-}
 
-public class PlayerStats
-{
-    public Dictionary<string, Dictionary<Bug, float>> BugFixTime;
+    [System.Serializable]
+    private class SerializeHelper
+    {
+        public List<BugFix> finishedbugfix;
+        public List<BugFix> startedbugfix;
+        public List<Bug> FoundBugs;
+    }
+
+    public void Save(List<BugFix> finishedbugfix, List<BugFix> startedbugfix, List<Bug> FoundBugs)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
+        bf.Serialize(file, new SerializeHelper()
+            {finishedbugfix = finishedbugfix, 
+                startedbugfix = startedbugfix,
+             FoundBugs = FoundBugs
+            });
+        file.Close();
+    }
+
+
+    public void Load()
+    {
+        BugFixer roomBugFixerScript;
+        var room = GameObject.FindGameObjectWithTag("Room");
+        if (room != null)
+        {
+            roomBugFixerScript = room.GetComponent<BugFixer>();
+            if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
+                var serailizeHelper = (SerializeHelper)bf.Deserialize(file);
+                if (roomBugFixerScript != null)
+                {
+                    roomBugFixerScript.FinishedBugFixes = serailizeHelper.finishedbugfix;
+                    roomBugFixerScript.StartedBugFixes = serailizeHelper.startedbugfix;
+                    if (serailizeHelper.FoundBugs != null) { roomBugFixerScript.bbb = serailizeHelper.FoundBugs; }
+                    ;
+                }
+
+                file.Close();
+            }
+        }
+
+
+
+    }
 }

@@ -19,7 +19,7 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
     private GameObject BugMenu;
     private Camera roomCamera;
     private MainCameraMove mainCameraMoveScript;
-    private RoomCustomization roomCustomizationScript;
+    private BugFixer roomBugFixerScript;
     public delegate void BugFoundEventHandler(Bug bug);
     public static event BugFoundEventHandler onBugFound;
 
@@ -33,12 +33,20 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         {
             mainCameraMoveScript = mainCamera.GetComponent<MainCameraMove>();
         }
-
-
-        BugToolTip.onBugFound += AddBugToRoomFoundBugs;
     }
 
-    private void CreateTooltip(PointerEventData data)
+    void Update()
+    {
+        if (tooltip != null)
+        {
+            if (!PanelIsActive && !tooltip.IsHovered)
+            {
+                GameManager.Instance.HideMenu(tooltip);
+            }
+        }
+    }
+
+    public void CreateTooltip(PointerEventData data)
     {
         newButton = Instantiate(prefab) as GameObject;
 
@@ -67,7 +75,7 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
             //set position
             var tooltipRect = newButton.GetComponent<RectTransform>();
             var canvasRect = _canvas.GetComponent<RectTransform>();
-            
+
             //without camera the position will be set to incorrect high values. So we need this check
             if (tempCameraObj != null)
             {
@@ -85,18 +93,7 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
         tooltip = sampleobj.GetComponent<Menu>();
     }
 
-    void Update()
-    {
-        if (tooltip != null)
-        {
-            if (!PanelIsActive && !tooltip.IsHovered)
-            {
-                GameManager.Instance.HideMenu(tooltip);
-            }
-        }
-    }
-
-    IEnumerator SetActivePanel(PointerEventData eventData)
+    public IEnumerator SetActivePanel(PointerEventData eventData)
     {
         // if we don't enter edit mode in scene. This is done to exclude popup tooltip 
         // while moving the camera
@@ -121,21 +118,6 @@ public class BugToolTip : MonoBehaviour, IPointerEnterHandler
                 yield return new WaitForSeconds(2f);
                 PanelIsActive = false;
             }
-        }
-    }
-
-    private void AddBugToRoomFoundBugs(Bug bug)
-    {
-        var room = GameObject.FindGameObjectWithTag("Room");
-        if (room != null)
-        {
-            roomCustomizationScript = room.GetComponent<RoomCustomization>();
-        }
-
-        if (roomCustomizationScript != null)
-        {
-            //roomCustomizationScript.AddBugToFoundBugs(bug);
-
         }
     }
 

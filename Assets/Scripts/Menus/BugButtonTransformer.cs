@@ -42,13 +42,11 @@ public class BugButtonTransformer : MonoBehaviour
     void OnEnable()
     {
         BugFixer.onBugFixed += SetIsFinished;
-
     }
 
     void OnDisable()
     {
         BugFixer.onBugFixed -= SetIsFinished;
-
     }
 
     public void Update()
@@ -67,7 +65,7 @@ public class BugButtonTransformer : MonoBehaviour
                     if (Bug.Type == bugFix.Bug.Type)
                     {
                         var now = DateTime.Now;
-                        var remainedTime = bugFix.EndTime - now;
+                        var remainedTime = DateTime.FromOADate(bugFix.EndTime) - now;
                         if (remainedTime.TotalSeconds > 0)
                         {
                             if (remainTime != null)

@@ -11,14 +11,34 @@ public class BugMenuPopulator : MonoBehaviour
     private GameObject newButton;
     private RoomCustomization roomCustomizationScript;
     private BugFixer roomBugFixerScript;
-    // Use this for initialization
+
     void Awake()
     {
         BugToolTip.onBugFound += this.PopulateBugMenu;
         RoomCustomization.onRoomLoaded += this.CleanBugMenu;
     }
 
-    // Update is called once per frame
+    void OnEnable()
+    {
+        BugFixer roomBugFixerScript;
+        var room = GameObject.FindGameObjectWithTag("Room");
+        if (room != null)
+        {
+            roomBugFixerScript = room.GetComponent<BugFixer>();
+            var foundugs = roomBugFixerScript.bbb;
+            if (foundugs != null)
+            {
+                foreach (var bug in foundugs)
+                {
+                    PopulateBugMenu(bug);
+                }
+            }
+        }
+
+
+
+    }
+
     public void PopulateBugMenu(Bug bug)
     {
         var room = GameObject.FindGameObjectWithTag("Room");

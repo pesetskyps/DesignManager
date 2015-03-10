@@ -8,6 +8,7 @@ public enum Bugs
     Termites
 }
 
+[System.Serializable]
 public class Bug
 {
     public string Description { get; set; }

@@ -112,7 +112,6 @@ GameObject:
   - 4: {fileID: 453042}
   - 114: {fileID: 11453038}
   - 65: {fileID: 6553038}
-  - 114: {fileID: 11433956}
   m_Layer: 0
   m_Name: Termites
   m_TagString: Bug
@@ -130,7 +129,6 @@ GameObject:
   - 4: {fileID: 453044}
   - 114: {fileID: 11453040}
   - 65: {fileID: 6553040}
-  - 114: {fileID: 11446964}
   m_Layer: 0
   m_Name: BadElectricity
   m_TagString: Bug
@@ -272,6 +270,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 477528}
   - 114: {fileID: 11401788}
+  - 114: {fileID: 11452442}
   m_Layer: 0
   m_Name: Room1
   m_TagString: Room
@@ -289,7 +288,6 @@ GameObject:
   - 4: {fileID: 497818}
   - 114: {fileID: 11497820}
   - 65: {fileID: 6597820}
-  - 114: {fileID: 11499370}
   m_Layer: 0
   m_Name: Termites
   m_TagString: Bug
@@ -962,6 +960,7 @@ MonoBehaviour:
   roomCost: 0
   roomBugs: 
   roomFeatures: 
+  FoundBugs: []
 --- !u!114 &11421076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -999,30 +998,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11433956
+--- !u!114 &11452442
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153042}
+  m_GameObject: {fileID: 177528}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dc437252a955b94db23ee70130b2aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
---- !u!114 &11446964
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc437252a955b94db23ee70130b2aa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: 
+  StartedBugFixes: []
+  FinishedBugFixes: []
 --- !u!114 &11453038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1062,18 +1050,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 127820, guid: 86c01a1775e710540a3da01716c0e5d1, type: 2}
   bugType: 1
---- !u!114 &11499370
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc437252a955b94db23ee70130b2aa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: 
 --- !u!198 &19853038
 ParticleSystem:
   m_ObjectHideFlags: 1
